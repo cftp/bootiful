@@ -1,0 +1,23 @@
+{
+        "name"       : "cftp/bootiful",
+        "description": "WordPress starter theme providing Bootstrap customisation",
+        "keywords"   : ["wordpress"],
+        "type"       : "wordpress-theme",
+        "homepage"   : "https://github.com/cftp/bootiful",
+        "license"    : "GPL-2.0",
+        "authors"    : [
+                {
+                        "name"    : "Code For The People",
+                        "email"   : "git@codeforthepeople.com",
+                        "homepage": "http://codeforthepeople.com"
+                }
+        ],
+        "support"    : {
+                "issues": "https://github.com/cftp/bootiful/issues",
+                "source": "https://github.com/cftp/bootiful"
+        },
+        "require"    : {
+                "php": ">=5.2.4",
+                "composer/installers": "~1.0"
+        }
+}

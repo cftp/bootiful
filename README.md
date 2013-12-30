@@ -1,4 +1,4 @@
 bootiful
 ========
 
-WordPress starter theme based providing Bootstrap customisation options
+WordPress starter theme providing Bootstrap customisation
