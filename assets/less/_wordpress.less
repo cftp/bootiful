@@ -1,0 +1,188 @@
+/* 
+
+_wordpress.less
+contents:
+
+	1. WordPress
+	2. oEmbed
+	3. Shortcodes
+	
+*/
+
+
+/* 1. WordPress (http://codex.wordpress.org/CSS#WordPress_Generated_Classes)
+--------------------------------------------------------------------------------------- */
+
+.entry-content img 
+	{
+	margin-bottom: @padding-large-vertical;	
+	}
+
+.alignleft,
+img.alignleft 
+	{
+	display: inline;
+	float: left;
+	margin-right: @padding-large-vertical;
+	}
+	
+.alignright,
+img.alignright 
+	{
+	display: inline;
+	float: right;
+  	margin-left: @padding-large-vertical;
+	}
+	
+.aligncenter,
+img.aligncenter 
+	{
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+	
+.wp-caption 
+	{
+	font-size: @font-size-base - 2px;
+	color: @gray-dark;
+	}
+	
+.wp-caption img 
+	{
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+	}
+	
+.wp-smiley 
+	{ 
+	max-height: 1em;
+	margin:0 !important;
+	}
+	
+.gallery dl 
+	{
+	margin: 0;
+	}
+	
+.gallery-caption 
+	{
+	margin:-@padding-large-vertical 0 0 0;
+	}
+
+blockquote.left 
+	{
+	float: left;
+	margin-left: 0;
+	margin-right: 20px;
+	text-align: right;
+	width: 33%;
+	}
+
+blockquote.right 
+	{
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+	text-align: left;
+	width: 33%;
+	}
+
+// responsive 
+
+.entry-content img,
+.comment-content img,
+.widget img 
+	{
+    //max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
+	}
+
+img[class*="align"],
+img[class*="wp-image-"] 
+	{
+    height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+	}
+
+img.size-full 
+	{
+    //max-width: 97.5%;
+    width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
+	}
+
+.wp-caption 
+	{ 
+	max-width: 100%;
+	}
+	
+// admin bar settings 
+
+.admin-bar.admin-bar-absolute #wpadminbar
+	{
+	position: absolute;
+	}
+
+/* 2. oEmbed
+--------------------------------------------------------------------------------------- */
+
+.o-container 
+	{
+	margin-bottom: @padding-large-vertical;
+
+	&.youtube,
+	&.vimeo,
+	&.slidesharenet,
+	&.brightcove
+		{
+	    position: relative;
+	    padding-top: @padding-large-vertical;
+	    padding-bottom: 49.25%;
+	    height: 0;
+		overflow: hidden;
+		}
+
+	&.soundcloud
+		{
+		position: relative;	    
+	    height: 165px;
+		overflow: hidden;
+		background-size: 100px 15px;		
+		}
+
+	&.twitter
+		{
+		iframe
+			{
+			margin: 0 auto !important;
+			}
+		}
+
+	&.youtube,
+	&.vimeo,
+	&.slidesharenet,
+	&.soundcloud,
+	&.brightcove
+		{
+
+		iframe,
+		object,
+		embed
+			{
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+			}
+		}
+
+	&.instagram img
+		{
+		width: 100%;
+		}
+	}
+
+
+/* 3. Shortcodes
+--------------------------------------------------------------------------------------- */
