@@ -13,7 +13,7 @@ class cftp_mce_editor {
 		add_action( 'init', array( $this, 'add_editor_style' ) );
 
 		// filters
-		// need to add bootstrap stuff, plus the defaults, plus find a way to embed the Google fonts
+		// need to add bootstrap stuff, plus the defaults
 		//add_filter( 'tiny_mce_before_init', array( $this, 'editor_style_select' ) );
 		add_filter( 'mce_css', array( $this, 'editor_css' ) );
 

@@ -58,7 +58,7 @@ function cftp_remove_recent_comments_style() {
  */
 function cftp_body_class($classes) {
 	
-	global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone, $wpdb, $post, $blog_id;
+	global $wpdb, $post, $blog_id;
 	
 	// multisite site id and child-site	
 	if (isset($blog_id)) {
@@ -187,7 +187,7 @@ add_filter('embed_oembed_html', 'cftp_embed_html', 10, 4) ;
 function cftp_embed_tweaks($provider, $args, $url) {
 
 	if (cftp_string_search('vimeo', $provider)) {
-		$provider = add_query_arg(apply_filters('cftp_viemo_features', array('color' => str_replace('#','', get_theme_mod( 'primarycol', '#ff0000')))), $provider);
+		$provider = add_query_arg(apply_filters('cftp_viemo_features', array('color' => str_replace('#','', get_theme_mod( 'brandprimary', '#ff0000')))), $provider);
 	}
 
 	return $provider;
