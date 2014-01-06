@@ -1,0 +1,26 @@
+{
+  "name": "bootiful",
+  "version": "1.0.0",
+  "author": "Code For The People <info@codeforthepeople.com>",
+  "homepage": "http://codeforthepeople.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cftp/bootiful.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cftp/bootiful/issues"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-wp-version": "~0.1.0",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-recess": "~0.4.0"
+  }
+}

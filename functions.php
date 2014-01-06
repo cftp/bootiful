@@ -193,8 +193,8 @@ function cftp_theme_js_setup() {
 	// standard shipped jquery
 	wp_enqueue_script('jquery');
 
-	// the onload/custom js file
-	// wp_enqueue_script('cftp-js');
+	// theme js file
+	wp_enqueue_script('cftp-js');
 }
 add_action( 'wp_enqueue_scripts', 'cftp_theme_js_setup' );
 
