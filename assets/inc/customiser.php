@@ -27,7 +27,7 @@ class cftp_customiser {
 	 * customiser_init
 	 * 
 	 * Apply certain filters to WordPress when customisations are being made.
-	 * Force a cache recompile and filter the cache bust variable and merge new settings into existing options.
+	 * Filter the cache bust variable and merge new (temporary) settings into existing options.
 	 * 
 	 * @author Scott Evans
 	 * @return void
@@ -62,6 +62,13 @@ class cftp_customiser {
 		// rename colours  
 		$wp_customize->get_section( 'colors' )->title = __( 'Colours', 'bootiful' );
 
+		// rename navigation
+		global $_wp_registered_nav_menus;
+		$wp_customize->get_section( 'nav' )->title =  _n( 'Menu', 'Menus', count($_wp_registered_nav_menus), 'bootiful' );
+
+		// move menus
+		$wp_customize->get_section( 'nav' )->priority = 25;
+
 		// rename background image section
 		$wp_customize->get_section( 'background_image' )->title = __( 'Logos &amp; Images', 'bootiful' );
 
@@ -71,7 +78,7 @@ class cftp_customiser {
 
 		// colours
 		// primary colour
-		$wp_customize->add_setting( 'primarycol',
+		$wp_customize->add_setting( 'brandprimary',
 			array(
 				'default' => '#fff'
 			) 
@@ -79,18 +86,18 @@ class cftp_customiser {
 	        
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'primarycol', 
+			'brandprimary', 
 			array(
-				'label' => __( 'Primary Colour', 'bootiful' ),
+				'label' => __( 'Brand Primary Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'primarycol',
+				'settings' => 'brandprimary',
 				'priority' => 13
 			) 
 		) );
 
 
 		// secondary colour
-		$wp_customize->add_setting( 'secondarycol',
+		$wp_customize->add_setting( 'brandsecondary',
 			array(
 				'default' => '#fff'
 			) 
@@ -98,17 +105,17 @@ class cftp_customiser {
 	        
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'secondarycol', 
+			'brandsecondary', 
 			array(
-				'label' => __( 'Secondary Colour', 'bootiful' ),
+				'label' => __( 'Brand Secondary Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'secondarycol',
+				'settings' => 'brandsecondary',
 				'priority' => 14
 			) 
 		) );
 
 	  	// body font colour
-		$wp_customize->add_setting( 'bodycol',
+		$wp_customize->add_setting( 'textcol',
 			array(
 				'default' => '#000000'
 			) 
@@ -116,11 +123,11 @@ class cftp_customiser {
 	        
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'bodycol', 
+			'textcol', 
 			array(
-				'label' => __( 'Body Colour', 'bootiful' ),
+				'label' => __( 'Text Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'bodycol',
+				'settings' => 'textcol',
 				'priority' => 15
 			) 
 		) );
@@ -163,7 +170,7 @@ class cftp_customiser {
 		) );
 
 		// success colour
-		$wp_customize->add_setting( 'successcol',
+		$wp_customize->add_setting( 'brandsuccess',
 			array(
 				'default' => '#5cb85c'
 			) 
@@ -171,17 +178,17 @@ class cftp_customiser {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'successcol', 
+			'brandsuccess', 
 			array(
 				'label' => __( 'Success Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'successcol',
+				'settings' => 'brandsuccess',
 				'priority' => 18
 			) 
 		) );
 
 		// warning colour
-		$wp_customize->add_setting( 'warningcol',
+		$wp_customize->add_setting( 'brandwarning',
 			array(
 				'default' => '#f0ad4e'
 			) 
@@ -189,17 +196,17 @@ class cftp_customiser {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'warningcol', 
+			'brandwarning', 
 			array(
 				'label' => __( 'Warning Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'warningcol',
+				'settings' => 'brandwarning',
 				'priority' => 19
 			) 
 		) );
 
 		// danger colour
-		$wp_customize->add_setting( 'dangercol',
+		$wp_customize->add_setting( 'branddanger',
 			array(
 				'default' => '#d9534f'
 			) 
@@ -207,12 +214,30 @@ class cftp_customiser {
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 
-			'dangercol', 
+			'branddanger', 
 			array(
 				'label' => __( 'Danger Colour', 'bootiful' ),
 				'section' => 'colors',
-				'settings' => 'dangercol',
+				'settings' => 'branddanger',
 				'priority' => 20
+			) 
+		) );
+
+		// info colour
+		$wp_customize->add_setting( 'brandinfo',
+			array(
+				'default' => '#5bc0de'
+			) 
+		);      
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 
+			'brandinfo', 
+			array(
+				'label' => __( 'Info Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'brandinfo',
+				'priority' => 21
 			) 
 		) );
 
@@ -380,24 +405,6 @@ class cftp_customiser {
 			)
 		) );
 
-		// placeholder
-		$wp_customize->add_setting('placeholder', 
-			array(
-
-			)
-		);
-
-		$wp_customize->add_control(new WP_Customize_Image_Control(
-			$wp_customize, 
-			'placeholder', 
-			array( 
-				'label' => __( 'Placeholder (for posts without media)', 'bootiful' ), 
-				'section' => 'background_image', 
-				'settings' => 'placeholder',
-				'priority' => 16
-			)
-		) );
-
 		// layout
 		$wp_customize->add_section( 'layout', 
 			array(
@@ -535,14 +542,16 @@ class cftp_customiser {
 
 		global $content_width;
 
-		$vars['primarycol'] = get_theme_mod( 'primarycol', '#ff0000');
-		$vars['secondarycol'] = get_theme_mod( 'secondarycol', '#bcbcbc');
-		$vars['bodycol'] = get_theme_mod( 'bodycol', '#bcbcbc');
+		$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
+		$vars['brandprimary'] = get_theme_mod( 'brandprimary', '#ff0000');
+		$vars['brandsecondary'] = get_theme_mod( 'brandsecondary', '#bcbcbc');
+		$vars['textcol'] = get_theme_mod( 'textcol', '#bcbcbc');
 		$vars['linkcol'] = get_theme_mod( 'linkcol', '#0000EE');
 		$vars['linkhovercol'] = get_theme_mod( 'linkhovercol', '#000000');
-		$vars['successcol'] = get_theme_mod( 'successcol', '#5cb85c');
-		$vars['warningcol'] = get_theme_mod( 'warningcol', '#f0ad4e');
-		$vars['dangercol'] = get_theme_mod( 'dangercol', '#d9534f');
+		$vars['brandsuccess'] = get_theme_mod( 'brandsuccess', '#5cb85c');
+		$vars['brandwarning'] = get_theme_mod( 'brandwarning', '#f0ad4e');
+		$vars['branddanger'] = get_theme_mod( 'branddanger', '#d9534f');
+		$vars['brandinfo'] = get_theme_mod( 'brandinfo', '#5bc0de');
 		$vars['headingfont']  = '~"'.$this->font_stack( get_theme_mod( 'headingfont', 'Cabin') ).'"';
 		$vars['headingfontweight'] = '~"'.get_theme_mod( 'headingfontweight', '700').'"';
 		$vars['bodyfont'] = '~"'.$this->font_stack( get_theme_mod( 'bodyfont', 'a1') ).'"';
