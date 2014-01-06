@@ -24,7 +24,7 @@ Notes:
 */
 
 // set content width
-if (!isset($content_width)) $content_width = apply_filters('cftp_content_width', 600);
+if ( ! isset( $content_width ) ) $content_width = apply_filters( 'cftp_content_width', 600 );
 
 /**
  * cftp_theme_setup
@@ -56,7 +56,8 @@ function cftp_theme_setup() {
 
 	// register navigation menus for this theme
 	register_nav_menus( apply_filters( 'cftp_register_menu', array(
-			'navigation' => __( 'Navigation', 'bootiful' )
+			'navigation' => __( 'Navigation', 'bootiful' ),
+			'footer' => __('Footer', 'bootiful')
 		)
 	));
 
@@ -83,7 +84,7 @@ function cftp_theme_constants() {
 	// cache bust based on options settings and file gen time of main css - filterable for child themes to add different css filemtime
 	$cachefiles = intval( filemtime( get_template_directory() . '/assets/less/styles.less' ) );
 	$cacheoptions = md5( serialize( get_theme_mods() ) );
-	$cacheoptions = preg_replace("/[^0-9]/", "", $cacheoptions);
+	$cacheoptions = preg_replace( "/[^0-9]/", "", $cacheoptions );
 	$cacheoptions = intval( $cacheoptions );
 	$cachebust = apply_filters( 'cftp_cache_bust', abs( intval( $cacheoptions+$cachefiles ) ) );
 	define( 'CFTP_CACHE_BUST', $cachebust );
@@ -249,8 +250,10 @@ if (!function_exists('current_url')) {
  * @param  string $string
  * @return bool        
  */
-function cftp_string_search($needle,$string) {
-	return (strpos($string, $needle) !== false);
+if ( !function_exists( 'cftp_string_search' ) ) {
+	function cftp_string_search($needle,$string) {
+		return (strpos($string, $needle) !== false);
+	}
 }
 
 /**
