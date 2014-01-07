@@ -6,7 +6,7 @@
 
 			<article <?php post_class() ?> role="article">
 
-				<header>
+				<header class="page-header">
 					<h1 class="entry-title"><?php the_title() ?></h1>
 				</header>
 				
