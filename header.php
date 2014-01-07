@@ -25,25 +25,33 @@
 		<a href="#content" class="skip-link" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
 	</div><!-- #accessibility -->
 	
-	<div id="wrapper" class="hfeed container">
+	<div id="wrapper" class="hfeed">
+		
+		<div id="header-wrapper">
 
-		<header id="header" role="banner">
-			
-			<?php if ( has_nav_menu( 'navigation' ) ) { ?>
-			<nav id="navigation" role="navigation">
+			<header id="header" role="banner">
+				
+				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
+				<nav id="navigation" role="navigation">
 
-				<?php
-				wp_nav_menu( 
-					array( 
-						'menu' => 'navigation',
-						'theme_location' => 'navigation',
-						'depth' => 2,
-						'container_class' => 'menu-navigation'
-					)
-				);
-				?>
+					<?php
+					wp_nav_menu( 
+						array( 
+							'menu' => 'navigation',
+							'theme_location' => 'navigation',
+							'depth' => 2,
+							'container_class' => 'menu-navigation'
+						)
+					);
+					?>
 
-			</nav><!--  #navigation -->
-			<?php } ?>
+				</nav><!--  #navigation -->
+				<?php } ?>
 
-		<div id="content" role="main">
+			</header><!-- #header -->
+
+		</div><!-- #header-wrapper -->
+		
+		<div id="content-wrapper">
+
+			<div id="content" role="main">

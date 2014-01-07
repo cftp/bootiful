@@ -29,13 +29,67 @@ contents:
 @import "_bootstrap.less"; 
 
 // gravity forms support - disable bundled styles
-/*@import "gravityforms.less";*/
+/*@import "_gravityforms.less";*/
 
 /* 2. Layout
 --------------------------------------------------------------------------------------- */
 
-body
+.bootiful-wrapper
 	{
+	.container();
+	max-width: @screen-lg;
+	}
+
+#header-wrapper
+	{
+	background: @brand-primary;
+	
+	#header
+		{
+		.bootiful-wrapper();
+
+		.menu-navigation
+			{
+			.make-row();
+			background: @brand-secondary;
+
+			.menu
+				{
+				.make-xs-column(12);
+				}
+			}
+		}
+	}
+
+#content-wrapper
+	{
+	.bootiful-wrapper();
+
+
+	#content
+		{
+		.make-row();
+		}
+
+	#content-container
+		{
+		.make-xs-column(8);
+		}
+
+	#sidebar
+		{
+		.make-xs-column(4);
+		}
+	}
+
+#footer-wrapper
+	{
+	background: @brand-primary;
+
+	#footer
+		{
+		.bootiful-wrapper();
+		}
 	}
 
 /* 3. Media Queries

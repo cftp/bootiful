@@ -1,25 +1,31 @@
-		</div><!-- #content -->
+			</div><!-- #content -->
 
-		<footer id="footer" role="contentinfo">
+		</div><!-- #content-wrapper -->
+		
+		<div id="footer-wrapper">
 
-			<?php if ( has_nav_menu( 'navigation' ) ) { ?>
-			<nav id="footer-navigation" role="navigation">
+			<footer id="footer" role="contentinfo">
 
-				<?php
-				wp_nav_menu( 
-					array( 
-						'menu' => 'footer',
-						'theme_location' => 'footer',
-						'depth' => 1,
-						'container' => false
-					)
-				);
-				?>
+				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
+				<nav id="footer-navigation" role="navigation">
 
-			</nav><!--  #footer-navigation -->
-			<?php } ?>
+					<?php
+					wp_nav_menu( 
+						array( 
+							'menu' => 'footer',
+							'theme_location' => 'footer',
+							'depth' => 1,
+							'container' => false
+						)
+					);
+					?>
 
-		</footer><!-- #footer -->
+				</nav><!--  #footer-navigation -->
+				<?php } ?>
+
+			</footer><!-- #footer -->
+
+		</div><!-- #footer-wrapper -->
 		
 	</div><!-- #wrapper .hfeed -->
 

@@ -1,57 +1,40 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article">
+	
+	<?php if ( has_post_thumbnail() ) { ?>
+		<a href="<?php the_permalink(); ?>" rel="bookmark" class="pull-left">
+			<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) ); ?>
+		</a>
+	<?php } ?>
 
-		<?php if ( 'post' == get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php //_s_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+	<div class="media-body">
+	
+		<header class="entry-header">
+			
+			<h2 class="entry-title media-heading"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
-	<?php if ( is_search() ) : // Only display Excerpts for Search ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
-	<div class="entry-content">
-		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', '_s' ) ); ?>
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', '_s' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-	<?php endif; ?>
+			<?php if ( is_sticky() ) : ?>
+				<div class="entry-sticky"><?php _e( 'Featured', 'bootiful' ); ?></div>
+			<?php else : ?>
+				<div class="entry-date"><time class="published" datetime="<?php the_time('Y-m-d\TH:i:s') ?>"><?php cftp_time(); ?></time></div>
+			<?php endif; ?>
 
-	<footer class="entry-meta">
-		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
-			<?php
-				/* translators: used between list items, there is a space after the comma */
-				$categories_list = get_the_category_list( __( ', ', '_s' ) );
-				if ( $categories_list ) :
-			?>
-			<span class="cat-links">
-				<?php printf( __( 'Posted in %1$s', '_s' ), $categories_list ); ?>
-			</span>
-			<?php endif; // End if categories ?>
+		</header><!-- .entry-header -->
 
-			<?php
-				/* translators: used between list items, there is a space after the comma */
-				$tags_list = get_the_tag_list( '', __( ', ', '_s' ) );
-				if ( $tags_list ) :
-			?>
-			<span class="tags-links">
-				<?php printf( __( 'Tagged %1$s', '_s' ), $tags_list ); ?>
-			</span>
-			<?php endif; // End if $tags_list ?>
-		<?php endif; // End if 'post' == get_post_type() ?>
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
+		
+		<footer>
 
-		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', '_s' ), __( '1 Comment', '_s' ), __( '% Comments', '_s' ) ); ?></span>
-		<?php endif; ?>
+			<ul class="entry-meta">
+				<li class="author vcard entry-author"><?php _e('By:', 'bootiful'); ?> <a class="url fn n" href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>" title="<?php the_author_meta('display_name'); ?>"><?php the_author_meta('display_name'); ?></a></li>
+				<li class="entry-categories"><?php _e('Posted in:', 'bootiful'); ?> <?php the_category(', ') ?></li>
+				<?php the_tags('<li class="entry-tags">'.__('Tagged:', 'bootiful').' ', ', ', '</li>'); ?>
+				<?php if ( comments_open() && ! post_password_required() ) : ?><li class="entry-comments"><?php comments_popup_link(__('No Comments', 'bootiful'), __('1 Comment', 'bootiful'), __('% Comments', 'bootiful')); ?></li><?php endif; ?>
+			</ul>
 
-		<?php edit_post_link( __( 'Edit', '_s' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+		</footer><!-- .entry-meta -->
+
+	</div><!-- .media-body -->
+
+</article><!-- #post-<?php the_ID(); ?> -->
