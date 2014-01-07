@@ -1,6 +1,7 @@
 <section class="archive-header">
 	
 	<header class="page-header">
+
 		<h1 class="archive-title">
 			<?php
 			if (is_home()) {
@@ -36,7 +37,7 @@
 			}
 			?>
 		</h1>
+		
 	</header>	
 	
 </section>
-

@@ -34,6 +34,16 @@ contents:
 /* 2. Layout
 --------------------------------------------------------------------------------------- */
 
+body
+	{
+	//background: @white url(http://griddle.it/@{screen-lg}-@{grid-columns}-@{grid-gutter-width}) repeat-y center top;
+	}
+
+#wrapper
+	{
+	background: url('http://www.baselineme.com/@{line-height-computed}') center top repeat;
+	}
+
 .bootiful-wrapper
 	{
 	.container();
@@ -42,7 +52,7 @@ contents:
 
 #header-wrapper
 	{
-	background: @brand-primary;
+	background: fadeout(@brand-primary, 30%);
 	
 	#header
 		{
@@ -51,11 +61,12 @@ contents:
 		.menu-navigation
 			{
 			.make-row();
-			background: @brand-secondary;
+			background: fadeout(@brand-secondary, 50%);
 
 			.menu
 				{
 				.make-xs-column(12);
+				margin-bottom: 0;
 				}
 			}
 		}
@@ -89,6 +100,18 @@ contents:
 	#footer
 		{
 		.bootiful-wrapper();
+		}
+	}
+
+.widget
+	{
+	.panel();
+	.panel-default();
+
+	.widgettitle
+		{
+		.panel-heading();
+		.panel-title();
 		}
 	}
 
