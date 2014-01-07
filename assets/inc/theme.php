@@ -137,6 +137,69 @@ function cftp_post_class($classes){
 add_filter('post_class', 'cftp_post_class', 20);
 
 /**
+ * cftp_time
+ *
+ * Create a post time based on WordPress settings, can be declared in child theme
+ *
+ * @author Scott Evans
+ * @param  string $format a custom stamp format e.g. F jS, Y &#8212; H:i
+ * @param  string $separator	
+ * @return void
+ */
+if (!function_exists('cftp_time')) {
+	function cftp_time($format = '', $separator = ' - ') {
+		
+		global $post;
+		
+		if ($format) {
+			the_time($format);
+			return;
+		}
+		
+		if ( ( get_option('date_format') != '' ) && ( get_option('time_format') != '' ) ) {
+			the_time( get_option( 'date_format' ) );
+			echo $separator;
+			the_time();
+			return;
+		}
+	
+		if ( ( get_option('date_format') != '' ) && ( get_option( 'time_format' ) == '' ) ) {
+			the_time( get_option( 'date_format' ) );
+			return;
+		}
+	}
+}
+
+/**
+ * cftp_get_time
+ *
+ * Return a post time based on WordPress settings, can be declared in child theme
+ *
+ * @author Scott Evans
+ * @param  string $format a custom stamp format e.g. F jS, Y &#8212; H:i
+ * @param  string $separator
+ * @return string
+ */
+if (!function_exists('cftp_get_time')) {
+	function cftp_get_time($format = '', $separator = ' - ') {
+		
+		global $post;
+		
+		if ($format) {
+			return get_the_time($format);
+		}
+		
+		if ((get_option('date_format') != '') && (get_option('time_format') != '')) {
+			return get_the_time(get_option('date_format')) . " - " . get_the_time();
+		}
+	
+		if ((get_option('date_format') != '') && (get_option('time_format') == '')) {
+			return get_the_time(get_option('date_format'));
+		}
+	}
+}
+
+/**
  * cftp_oembed_wmode
  *
  * Fix oembed window mode for flash objects
