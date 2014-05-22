@@ -1,0 +1,175 @@
+/*
+
+styles.scss
+contents:
+
+	1. Import
+	2. Layout
+	3. Media Queries
+	4. Device Specific Media Queries
+
+*/
+/* 1. Import
+--------------------------------------------------------------------------------------- */
+// bootstrap
+@import "bootstrap/bootstrap";
+// temp customiser simulation
+@import "customiser_vars";
+// variables override
+@import "variables";
+// custom mixins
+@import "mixins";
+// wordpress styles (core, oembed, shortcodes)
+@import "wordpress";
+// custom bootstrap styles
+@import "bootstrap";
+
+// gravity forms support - disable bundled styles
+/*@import "_gravityforms.scss";*/
+
+/* 2. Layout
+--------------------------------------------------------------------------------------- */
+
+body {
+	//background: @white url(http://griddle.it/@{screen-lg}-@{grid-columns}-@{grid-gutter-width}) repeat-y center top;
+}
+
+#wrapper {
+	//background: url('http://www.baselineme.com/@{line-height-computed}') center top repeat;
+}
+
+.bootiful-wrapper {
+	@extend .container;
+	max-width: $screen-lg;
+}
+
+#header-wrapper {
+	background: fade-out( $brand-primary, 0.3 );
+
+	#header {
+		@extend .bootiful-wrapper;
+
+		.menu-navigation {
+			@include make-row;
+			background: fade-out( $brand-secondary, 0.5 );
+
+			.menu {
+				@include make-xs-column(12);
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+#content-wrapper {
+	@extend .bootiful-wrapper;
+
+	#content {
+		@include make-row;
+	}
+
+	#content-container {
+		@include make-xs-column(8);
+	}
+
+	#sidebar {
+		@include make-xs-column(4);
+	}
+}
+
+#footer-wrapper {
+	background: $brand-primary;
+
+	#footer {
+		@extend .bootiful-wrapper;
+	}
+}
+
+.widget {
+	@extend .panel;
+	@extend .panel-default;
+
+	.widgettitle {
+		@extend .panel-heading;
+		@extend .panel-title;
+	}
+}
+
+/* 3. Media Queries
+--------------------------------------------------------------------------------------- */
+
+// larger mobile devices like galaxy note
+@media only screen and (min-width: 481px) {
+
+	// styles in 481up.scss
+	//@import "481up.scss";
+
+}
+
+// tablets and smaller laptops
+@media only screen and (min-width: 768px) {
+
+	// styles in 768up.scss
+	//@import "768up.scss";
+
+}
+
+// desktop, normal laptops
+@media only screen and (min-width: 1030px) {
+
+	// styles in 1030up.scss
+	//@import "1030up.scss";
+
+}
+
+// larger viewing sizes, desktops, full screen viewers?
+@media only screen and (min-width: 1240px) {
+
+	// styles in 1240up.scss
+	//@import "1240up.scss";
+
+}
+
+/* 4. Device Specific Media Queries
+--------------------------------------------------------------------------------------- */
+
+// retina displays
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (-moz-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 1.5),
+only screen and (min-resolution: 144dpi),
+only screen and (min-resolution: 2dppx) {
+	//@import "2x.scss";
+}
+
+// Smartphones (portrait and landscape)
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+	/* prevent iOS, WinMobile from adjusting font size */
+	html {
+		-webkit-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+	}
+
+}
+
+// Smartphones (landscape)
+@media only screen and (min-width: 321px) {
+}
+
+// Smartphones (portrait)
+@media only screen and (max-width: 320px) {
+}
+
+// iPads (portrait and landscape)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+}
+
+// iPads (landscape)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+}
+
+// iPads (portrait)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+}
