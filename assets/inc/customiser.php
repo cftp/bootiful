@@ -542,7 +542,7 @@ class cftp_customiser {
 
 		global $content_width;
 
-		$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
+		//$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
 		$vars['brandprimary'] = get_theme_mod( 'brandprimary', '#ff0000');
 		$vars['brandsecondary'] = get_theme_mod( 'brandsecondary', '#bcbcbc');
 		$vars['textcol'] = get_theme_mod( 'textcol', '#bcbcbc');
@@ -695,7 +695,7 @@ class cftp_customiser {
 			$gwf_uri = "https://www.googleapis.com/webfonts/v1/webfonts?key=" . $api_key . "&sort=" . $sort;
 			
 			// should use wp_remote_post
-			$raw = wp_remote_get( $gwf_uri, array( 'timeout' => 120 ) );
+			$raw = wp_remote_get( $gwf_uri, array( 'timeout' => 10 ) );
 
 			if (! is_wp_error( $raw ) ) {
 
