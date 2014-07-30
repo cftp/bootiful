@@ -1,0 +1,301 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bootiful\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-30 14:23-0000\n"
+"PO-Revision-Date: 2014-07-30 14:24-0000\n"
+"Last-Translator: Scott Evans @scottsweb <translate@scott.ee>\n"
+"Language-Team: @scottsweb <null@scott.ee>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html_e;esc_html__;esc_attr_e;esc_attr__;"
+"_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2;_n_noop:1,2;"
+"__ngettext_noop:1,2;_c,_nc:4c,1,2\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.6.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:8
+msgid "404: Page Not Found"
+msgstr ""
+
+#: 404.php:13
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable. Try using the search form below to find what "
+"you are looking for."
+msgstr ""
+
+#: assets/inc/customiser.php:63
+msgid "Colours"
+msgstr ""
+
+#: assets/inc/customiser.php:67
+msgid "Menu"
+msgid_plural "Menus"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/inc/customiser.php:73
+msgid "Logos &amp; Images"
+msgstr ""
+
+#: assets/inc/customiser.php:91
+msgid "Brand Primary Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:110
+msgid "Brand Secondary Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:128
+msgid "Text Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:147
+msgid "Link Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:165
+msgid "Link Hover Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:183
+msgid "Success Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:201
+msgid "Warning Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:219
+msgid "Danger Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:237
+msgid "Info Colour"
+msgstr ""
+
+#: assets/inc/customiser.php:247
+msgid "Typography"
+msgstr ""
+
+#: assets/inc/customiser.php:264
+msgid "Heading Font"
+msgstr ""
+
+#: assets/inc/customiser.php:282
+msgid "Weight"
+msgstr ""
+
+#: assets/inc/customiser.php:305
+msgid "Body Font"
+msgstr ""
+
+#: assets/inc/customiser.php:324
+msgid "Background Size"
+msgstr ""
+
+#: assets/inc/customiser.php:330
+msgid "Auto"
+msgstr ""
+
+#: assets/inc/customiser.php:331
+msgid "Contain"
+msgstr ""
+
+#: assets/inc/customiser.php:332
+msgid "Cover"
+msgstr ""
+
+#: assets/inc/customiser.php:347
+msgid "Logo"
+msgstr ""
+
+#: assets/inc/customiser.php:365
+msgid "Logo @2x"
+msgstr ""
+
+#: assets/inc/customiser.php:383
+msgid "Favicon (.ico 32px by 32px)"
+msgstr ""
+
+#: assets/inc/customiser.php:401
+msgid "Touch Icon (152px by 152px)"
+msgstr ""
+
+#: assets/inc/customiser.php:411
+msgid "Layout"
+msgstr ""
+
+#: assets/inc/customiser.php:414
+msgid "Layout theme options."
+msgstr ""
+
+#: assets/inc/editor.php:47
+msgid "Error"
+msgstr ""
+
+#: assets/inc/editor.php:53
+msgid "Notice"
+msgstr ""
+
+#: assets/inc/editor.php:59
+msgid "Success"
+msgstr ""
+
+#: assets/inc/editor.php:65
+msgid "Text Button"
+msgstr ""
+
+#: assets/inc/editor.php:70
+msgid "Loud"
+msgstr ""
+
+#: assets/inc/editor.php:75
+msgid "Quiet"
+msgstr ""
+
+#: assets/inc/editor.php:80
+msgid "Highlight"
+msgstr ""
+
+#: assets/inc/sidebars.php:42
+msgid "Default Sidebar"
+msgstr ""
+
+#: assets/inc/sidebars.php:42
+msgid "Default sidebar."
+msgstr ""
+
+#: assets/inc/sidebars.php:45
+msgid "Error 404"
+msgstr ""
+
+#: assets/inc/sidebars.php:45
+msgid "Optional sidebar for 404 page."
+msgstr ""
+
+#: functions.php:67
+msgid "Navigation"
+msgstr ""
+
+#: functions.php:68
+msgid "Footer"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content &raquo;"
+msgstr ""
+
+#: page.php:14 single.php:14
+msgid "Page:"
+msgstr ""
+
+#: page.php:21 single.php:21
+#, php-format
+msgid "This entry was posted by %1$s on %2$s and is filed under %3$s. "
+msgstr ""
+
+#: page.php:27 single.php:27
+#, php-format
+msgid ""
+"You can follow any responses to this entry through the %1$sRSS 2.0%2$s feed. "
+msgstr ""
+
+#: page.php:36 single.php:36
+#, php-format
+msgid ""
+"You can <a href=\"#respond\">leave a response</a>, or <a href=\"%1$s\" rel="
+"\"trackback\">trackback</a> from your own site."
+msgstr ""
+
+#: page.php:44 single.php:44
+#, php-format
+msgid ""
+"Responses are currently closed, but you can leave a <a href=\"%1$s\" rel="
+"\"trackback\">trackback</a> from your own site."
+msgstr ""
+
+#: page.php:51 single.php:51
+msgid ""
+"You can skip to the end and leave a response. Pinging is currently not "
+"allowed."
+msgstr ""
+
+#: page.php:56 single.php:56
+msgid "Both comments and pings are currently closed."
+msgstr ""
+
+#: parts/header.php:11
+msgid "Latest Posts"
+msgstr ""
+
+#: parts/header.php:20
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: parts/header.php:22
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: parts/header.php:24
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: parts/header.php:27
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: parts/header.php:32
+#, php-format
+msgid "Search Results for %s"
+msgstr ""
+
+#: parts/header.php:34
+msgid "Not Found"
+msgstr ""
+
+#: parts/loop.php:16
+msgid "Featured"
+msgstr ""
+
+#: parts/loop.php:30
+msgid "By:"
+msgstr ""
+
+#: parts/loop.php:31
+msgid "Posted in:"
+msgstr ""
+
+#: parts/loop.php:32
+msgid "Tagged:"
+msgstr ""
+
+#: parts/loop.php:33
+msgid "No Comments"
+msgstr ""
+
+#: parts/loop.php:33
+msgid "1 Comment"
+msgstr ""
+
+#: parts/loop.php:33
+msgid "% Comments"
+msgstr ""
+
+#: searchform.php:3 searchform.php:6
+msgid "Search"
+msgstr ""
+
+#: searchform.php:4
+msgid "Search for:"
+msgstr ""
