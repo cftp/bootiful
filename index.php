@@ -18,6 +18,8 @@
 
 		<?php endif; ?>
 
+		<?php get_template_part( 'parts/paginate' ); ?>
+
 	</div>
 
 	<?php get_sidebar(); ?>
