@@ -137,7 +137,7 @@ class cftp_mce_editor {
 		// cache bust
 		foreach ( $mce_css as & $css ) {
 			if ( false === strpos( $css, 'ver=' ) ) {
-				$css = add_query_arg( 'ver', KEYSTONE_CACHE_BUST, $css );
+				$css = add_query_arg( 'ver', CFTP_CACHE_BUST, $css );
 			}
 		}
 
