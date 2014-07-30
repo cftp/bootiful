@@ -22,6 +22,7 @@ Notes:
 ----------------------------------------
 tweak customiser - https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
 nav - https://github.com/twittem/wp-bootstrap-navwalker
+add vcard spec data - http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#vcard
 */
 
 // set content width
@@ -53,7 +54,13 @@ function cftp_theme_setup() {
 	add_theme_support( 'menus' );
 
 	// html5 features
-	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form' ) );
+	add_theme_support( 'html5', array(
+		'comment-list',
+		'comment-form',
+		'search-form',
+		'gallery',
+		'captions'
+	) );
 
 	// register navigation menus for this theme
 	register_nav_menus( apply_filters( 'cftp_register_menu', array(
