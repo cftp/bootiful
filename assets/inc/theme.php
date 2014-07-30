@@ -4,19 +4,19 @@
  * cftp_language_attributes
  *
  * Set the correct HTML attributes
- * 
+ *
  * @return string of html attributes
  */
 function cftp_language_attributes() {
 	$attributes = array();
 	$output = '';
-	
+
 	if (function_exists('is_rtl')) {
 		if (is_rtl() == 'rtl') {
 			$attributes[] = 'dir="rtl"';
 		}
 	}
-	
+
 	$lang = get_bloginfo('language');
 
 	if ($lang && $lang !== 'en-US') {
@@ -24,12 +24,40 @@ function cftp_language_attributes() {
 	} else {
 		$attributes[] = 'lang="en"';
 	}
-	
+
 	$output = implode(' ', $attributes);
 	$output = apply_filters('cftp_language_attributes', $output);
 	return $output;
 }
 add_filter('language_attributes', 'cftp_language_attributes');
+
+/**
+ * cftp_schema
+ *
+ * Add schema data to the html tag (http://schema.org/)
+ * Currently not used
+ *
+ * @return void
+ */
+function cftp_schema() {
+
+	$schema = 'http://schema.org/';
+	$type = '';
+
+	if( is_singular( 'post' ) ) {
+		$type = "BlogPosting";
+	} else if( is_author() ) {
+		$type = 'ProfilePage';
+	} else if( is_search() ) {
+		$type = 'SearchResultsPage';
+	} else if( is_page() ) {
+		$type = 'WebPage';
+	}
+
+	if ($type != '') {
+		echo 'itemscope itemtype="' . $schema . $type . '"';
+	}
+}
 
 /**
  * cftp_remove_recent_comments_style
@@ -51,31 +79,31 @@ function cftp_remove_recent_comments_style() {
 /**
  * cftp_body_class
  *
- * Filter the body class to be more meaningful 
- * 
+ * Filter the body class to be more meaningful
+ *
  * @param  array $classes
  * @return array $classes
  */
 function cftp_body_class($classes) {
-	
+
 	global $wpdb, $post, $blog_id;
-	
-	// multisite site id and child-site	
+
+	// multisite site id and child-site
 	if (isset($blog_id)) {
 		$classes[] = 'site-'.$blog_id;
-		
+
 		if($blog_id != 1) {
 			$classes[] = 'child-site';
 		}
 	}
-	
+
 	// date & time
 	$t = time() + ( get_option('gmt_offset') * 3600 );
 	$classes[] = 'y' . gmdate( 'Y', $t ); // Year
 	$classes[] = 'm' . gmdate( 'm', $t ); // Month
 	$classes[] = 'd' . gmdate( 'd', $t ); // Day
 	$classes[] = 'h' . gmdate( 'H', $t ); // Hour
-	
+
 	// parent section
     if (is_page()) {
         if ($post->post_parent) {
@@ -87,12 +115,12 @@ function cftp_body_class($classes) {
         $post_data = get_post($parent, ARRAY_A);
         $classes[] = 'section-' . $post_data['post_name'];
     }
-	
+
 	// post/page name/slug
-	if (is_page() || is_single()) { 
+	if (is_page() || is_single()) {
 		$classes[] = $post->post_name;
 	}
-	
+
 	return $classes;
 }
 add_filter('body_class','cftp_body_class');
@@ -103,32 +131,32 @@ add_filter('body_class','cftp_body_class');
  * Add some custom classes to each post loop
  *
  * @author Scott Evans
- * @param  array $classes 
+ * @param  array $classes
  * @return array
  */
 function cftp_post_class($classes){
-	
+
 	global $wp_query, $post;
-	
+
 	// apply only to archives not single posts
 	if ( !is_single() ) {
-	
+
 		// loop
 		$classes[] = 'loop';
-		
+
 		// first and last
-		if ($wp_query->current_post+1 == 1) $classes[] = 'loop-first'; 
+		if ($wp_query->current_post+1 == 1) $classes[] = 'loop-first';
 		if (($wp_query->current_post+1) == $wp_query->post_count) $classes[] = 'loop-last';
-	
+
 		// odd and even
-		if ($wp_query->current_post+1 & 1) { $classes[] = "loop-odd"; } else { $classes[] = "loop-even"; } 
-	
+		if ($wp_query->current_post+1 & 1) { $classes[] = "loop-odd"; } else { $classes[] = "loop-even"; }
+
 		// counter
 		$count = $wp_query->current_post+1;
 		$classes[] = 'loop-'.$count;
-		
+
 	}
-	
+
 	// featured image
 	if (has_post_thumbnail($post->ID)) $classes[] = "featured-image";
 
@@ -143,26 +171,26 @@ add_filter('post_class', 'cftp_post_class', 20);
  *
  * @author Scott Evans
  * @param  string $format a custom stamp format e.g. F jS, Y &#8212; H:i
- * @param  string $separator	
+ * @param  string $separator
  * @return void
  */
 if (!function_exists('cftp_time')) {
 	function cftp_time($format = '', $separator = ' - ') {
-		
+
 		global $post;
-		
+
 		if ($format) {
 			the_time($format);
 			return;
 		}
-		
+
 		if ( ( get_option('date_format') != '' ) && ( get_option('time_format') != '' ) ) {
 			the_time( get_option( 'date_format' ) );
 			echo $separator;
 			the_time();
 			return;
 		}
-	
+
 		if ( ( get_option('date_format') != '' ) && ( get_option( 'time_format' ) == '' ) ) {
 			the_time( get_option( 'date_format' ) );
 			return;
@@ -182,17 +210,17 @@ if (!function_exists('cftp_time')) {
  */
 if (!function_exists('cftp_get_time')) {
 	function cftp_get_time($format = '', $separator = ' - ') {
-		
+
 		global $post;
-		
+
 		if ($format) {
 			return get_the_time($format);
 		}
-		
+
 		if ((get_option('date_format') != '') && (get_option('time_format') != '')) {
 			return get_the_time(get_option('date_format')) . " - " . get_the_time();
 		}
-	
+
 		if ((get_option('date_format') != '') && (get_option('time_format') == '')) {
 			return get_the_time(get_option('date_format'));
 		}
@@ -205,8 +233,8 @@ if (!function_exists('cftp_get_time')) {
  * Fix oembed window mode for flash objects
  *
  * @author Scott Evans
- * @param  string $embed 
- * @return string $embed 
+ * @param  string $embed
+ * @return string $embed
  */
 function cftp_oembed_wmode( $embed ) {
     if ( strpos( $embed, '<param' ) !== false ) {
@@ -223,10 +251,10 @@ add_filter('embed_oembed_html', 'cftp_oembed_wmode', 1);
  * Wrap oembed objects with a responsive container
  *
  * @author Scott Evans
- * @param  string $html    
+ * @param  string $html
  * @param  string $url
- * @param  array $attr    
- * @param  int $post_ID 
+ * @param  array $attr
+ * @param  int $post_ID
  * @return string $return
  */
 function cftp_embed_html($html, $url, $attr, $post_ID) {
@@ -243,9 +271,9 @@ add_filter('embed_oembed_html', 'cftp_embed_html', 10, 4) ;
  *
  * @author Scott Evans
  * @param  string $provider
- * @param  array $args    
- * @param  string $url     
- * @return string $provider      
+ * @param  array $args
+ * @param  string $url
+ * @return string $provider
  */
 function cftp_embed_tweaks($provider, $args, $url) {
 

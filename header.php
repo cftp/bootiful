@@ -9,7 +9,7 @@
 <meta charset="<?php bloginfo('charset') ?>" />
 
 <!-- title -->
-<title><?php wp_title( '|', true, 'right' ); ?></title>
+<title itemprop="name"><?php wp_title( '|', true, 'right' ); ?></title>
 
 <!-- set mobile viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,19 +24,24 @@
 	<div id="accessibility" class="sr-only">
 		<a href="#content" class="skip-link" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
 	</div><!-- #accessibility -->
-	
+
 	<div id="wrapper" class="hfeed">
-		
+
 		<div id="header-wrapper">
 
 			<header id="header" role="banner">
-				
+
+				<div id="site-info" itemscope itemtype="http://schema.org/Organization">
+					<a id="site-title" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo('name') ); ?>" rel="home" class="logo" itemprop="url"><span itemprop="name"><?php bloginfo('name'); ?></span></a>
+					<span id="site-description" itemprop="description"><?php bloginfo('description') ?></span>
+				</div>
+
 				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
 				<nav id="navigation" role="navigation">
 
 					<?php
-					wp_nav_menu( 
-						array( 
+					wp_nav_menu(
+						array(
 							'menu' => 'navigation',
 							'theme_location' => 'navigation',
 							'depth' => 2,
@@ -51,7 +56,7 @@
 			</header><!-- #header -->
 
 		</div><!-- #header-wrapper -->
-		
+
 		<div id="content-wrapper">
 
 			<div id="content" role="main">
