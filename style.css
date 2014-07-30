@@ -2,11 +2,23 @@
 Theme Name: bootiful
 Theme URI: http://codeforthepeople.com
 Description: WordPress starter theme providing Bootstrap customisation
-Version: 0.1
+Version: 0.2
 Author: <a href="http://codeforthepeople.com/">Code For The People</a>
 Author URI: http://codeforthepeople.com
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: light, white, black, gray, one-column, two-columns, left-sidebar, right-sidebar, fixed-width, flexible-width, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, sticky-post, theme-options, translation-ready
+Tags: light, white, black, gray, one-column, two-columns, left-sidebar, right-sidebar, fluid-layout, fixed-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, sticky-post, theme-options, translation-ready
 Text Domain: bootiful
 */
+
+.wp-caption,
+.wp-caption-text,
+.sticky,
+.gallery-caption,
+.bypostauthor,
+.alignright,
+.alignleft,
+.aligncenter
+	{
+	/* added to pass theme check - styles can be found in less folder */
+	}
