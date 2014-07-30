@@ -105,7 +105,7 @@ class cftp_mce_editor {
 			return $css;
 		}
 
-		$mce_css   = array();
+		$mce_css   = explode( ',', $css );
 		$style_uri = get_stylesheet_directory_uri();
 		$style_dir = get_stylesheet_directory();
 
@@ -131,32 +131,13 @@ class cftp_mce_editor {
 			$gfonts = array_unique($gfonts);
 			$getfonts = implode('|', $gfonts);
 			$protocol = is_ssl() ? 'https' : 'http';
-			$mce_css[] = add_query_arg('version', CFTP_CACHE_BUST, $protocol . '://fonts.googleapis.com/css?family='.$getfonts);
+			$mce_css[] = add_query_arg('ver', CFTP_CACHE_BUST, $protocol . '://fonts.googleapis.com/css?family='.$getfonts);
 		}
 
 		// cache bust
-		if (is_child_theme()) {
-			$template_uri = get_template_directory_uri();
-			$template_dir = get_template_directory();
-
-			foreach($editor_styles as $key => $file) {
-				if ($file && file_exists("$template_dir/$file")) {
-					$mce_css[] = add_query_arg(
-						'version',
-						CFTP_CACHE_BUST,
-						"$template_uri/$file"
-					);
-				}
-			}
-		}
-
-		foreach($editor_styles as $file) {
-			if ($file && file_exists( "$style_dir/$file")) {
-				$mce_css[] = add_query_arg(
-					'version',
-					CFTP_CACHE_BUST,
-					"$style_uri/$file"
-				);
+		foreach ( $mce_css as & $css ) {
+			if ( false === strpos( $css, 'ver=' ) ) {
+				$css = add_query_arg( 'ver', KEYSTONE_CACHE_BUST, $css );
 			}
 		}
 
