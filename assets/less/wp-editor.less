@@ -1,0 +1,27 @@
+html
+	{
+	background: #fff !important;
+	}
+
+html .mceContentBody
+	{
+	max-width: e("@{contentwidth}px");
+	padding: 10px;
+	background: #fff;
+	border: none;
+	}
+
+// bootstrap
+@import "bootstrap/bootstrap.less";
+
+// variables override
+@import "_variables.less";
+
+// custom mixins
+@import "_mixins.less";
+
+// wordpress styles (core, oembed, shortcodes)
+@import "_wordpress.less";
+
+// custom bootstrap styles
+@import "styles.less";
