@@ -16,7 +16,6 @@
 
 			</div>
 
-
 		</article>
 
 	</div>

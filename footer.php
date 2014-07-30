@@ -1,7 +1,7 @@
 			</div><!-- #content -->
 
 		</div><!-- #content-wrapper -->
-		
+
 		<div id="footer-wrapper">
 
 			<footer id="footer" role="contentinfo">
@@ -10,8 +10,8 @@
 				<nav id="footer-navigation" role="navigation">
 
 					<?php
-					wp_nav_menu( 
-						array( 
+					wp_nav_menu(
+						array(
 							'menu' => 'footer',
 							'theme_location' => 'footer',
 							'depth' => 1,
@@ -26,7 +26,7 @@
 			</footer><!-- #footer -->
 
 		</div><!-- #footer-wrapper -->
-		
+
 	</div><!-- #wrapper .hfeed -->
 
 	<div id="wp-footer">
