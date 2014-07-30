@@ -1,5 +1,5 @@
 <section class="archive-header">
-	
+
 	<header class="page-header">
 
 		<h1 class="archive-title">
@@ -37,7 +37,7 @@
 			}
 			?>
 		</h1>
-		
-	</header>	
-	
+
+	</header>
+
 </section>

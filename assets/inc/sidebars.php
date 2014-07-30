@@ -14,8 +14,8 @@ class cftp_sidebars {
 		add_action( 'widgets_init', array( $this, 'remove_wordpress_widgets'), 10);
 
 		// filters
-		
-		// Enable oEmbed & shortcodes in text widgets 
+
+		// Enable oEmbed & shortcodes in text widgets
 		global $wp_embed;
 		add_filter('widget_text', array( $wp_embed, 'run_shortcode' ), 8);
 		add_filter('widget_text', array( $wp_embed, 'autoembed'), 8);
@@ -27,27 +27,27 @@ class cftp_sidebars {
 	 * register_sidebars
 	 *
 	 * Register the required sidebars for this theme
-	 * 
-	 * @author Scott Evans 
-	 * @return void 
+	 *
+	 * @author Scott Evans
+	 * @return void
 	 */
 	function register_sidebars() {
-		
+
 		if (!function_exists('register_sidebars'))
 			return;
-		
+
 		$sidebars = apply_filters('cftp_sidebars', array(
-			
+
 			// sidebar
 			'sidebar'	=> array( 'title' => __('Default Sidebar', 'bootiful'), 'description' => __('Default sidebar.', 'bootiful') ),
-		
+
 			// 404
-			'error'		=> array( 'title' => __('Error 404', 'bootiful'), 'description' => __('Optional sidebar for 404 page.', 'bootiful') ) 
+			'error'		=> array( 'title' => __('Error 404', 'bootiful'), 'description' => __('Optional sidebar for 404 page.', 'bootiful') )
 
 		));
-		
+
 		foreach ($sidebars as $key => $sidebar) {
-			
+
 			$heading = (isset($sidebar['heading']) ? $sidebar['heading'] : 'h4');
 
 			register_sidebar(
@@ -60,7 +60,7 @@ class cftp_sidebars {
 					'before_title'  => '<'.$heading.' class="widgettitle">',
 					'after_title'   => '</'.$heading.'>'
 				)
-			);	
+			);
 		}
 	}
 
@@ -76,13 +76,13 @@ class cftp_sidebars {
 
 		// calendar
 		unregister_widget('WP_Widget_Calendar');
-		
+
 		// links
 		unregister_widget('WP_Widget_Links');
 
 		// meta
 		unregister_widget('WP_Widget_Meta');
-		
+
 	}
 }
 

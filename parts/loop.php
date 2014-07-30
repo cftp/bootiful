@@ -1,5 +1,5 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article">
-	
+
 	<?php if ( has_post_thumbnail() ) { ?>
 		<a href="<?php the_permalink(); ?>" rel="bookmark" class="pull-left">
 			<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) ); ?>
@@ -7,9 +7,9 @@
 	<?php } ?>
 
 	<div class="media-body">
-	
+
 		<header class="entry-header">
-			
+
 			<h2 class="entry-title media-heading"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 			<?php if ( is_sticky() ) : ?>
@@ -23,7 +23,7 @@
 		<div class="entry-summary">
 			<?php the_excerpt(); ?>
 		</div><!-- .entry-summary -->
-		
+
 		<footer>
 
 			<ul class="entry-meta">

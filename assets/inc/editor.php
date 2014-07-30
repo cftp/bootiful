@@ -23,9 +23,9 @@ class cftp_mce_editor {
 	* add_editor_style
 	*
 	* Register the editor styles
-	* 
-	* @author Scott Evans 
-	* @return void 
+	*
+	* @author Scott Evans
+	* @return void
 	*/
 	function add_editor_style() {
 		add_editor_style( 'assets/less/wp-editor.less' );
@@ -94,8 +94,8 @@ class cftp_mce_editor {
 	 * Cache bust TinyMCE editor styles and load Google fonts
 	 *
 	 * @author http://bit.ly/12Yz03u
-	 * @param  string $css 
-	 * @return string     
+	 * @param  string $css
+	 * @return string
 	 */
 	function editor_css($css) {
 
@@ -118,21 +118,21 @@ class cftp_mce_editor {
 		$allfonts = $cftp_customiser->get_fonts();
 
 		$gfonts = array();
-		
+
 		if ( ! $cftp_customiser->string_search('(system)', $allfonts[$heading_font]['name'] ) ) {
 			$gfonts[] = $heading_font . ':' . $heading_font_weight;
 		}
-		
+
 		if ( ! $cftp_customiser->string_search('(system)', $allfonts[$body_font]['name'] ) ) {
 			$gfonts[] = $body_font;
 		}
-	
-		if ( ! empty( $gfonts ) ) { 
+
+		if ( ! empty( $gfonts ) ) {
 			$gfonts = array_unique($gfonts);
 			$getfonts = implode('|', $gfonts);
 			$protocol = is_ssl() ? 'https' : 'http';
-			$mce_css[] = add_query_arg('version', CFTP_CACHE_BUST, $protocol . '://fonts.googleapis.com/css?family='.$getfonts); 
-		}		
+			$mce_css[] = add_query_arg('version', CFTP_CACHE_BUST, $protocol . '://fonts.googleapis.com/css?family='.$getfonts);
+		}
 
 		// cache bust
 		if (is_child_theme()) {

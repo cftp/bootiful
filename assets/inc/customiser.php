@@ -25,10 +25,10 @@ class cftp_customiser {
 
 	/**
 	 * customiser_init
-	 * 
+	 *
 	 * Apply certain filters to WordPress when customisations are being made.
 	 * Filter the cache bust variable and merge new (temporary) settings into existing options.
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @return void
 	 */
@@ -42,14 +42,14 @@ class cftp_customiser {
 			$theme_slug = get_option( 'stylesheet' );
 			add_filter( 'option_theme_mods_' . $theme_slug, array($this, 'merge_theme_mods'), 10, 1 );
 
-		} 
+		}
 	}
 
 	/**
 	 * register
-	 * 
+	 *
 	 * Register the themes custom options and setting with the WP theme customiser.
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @param  object $wp_customize
 	 * @return void
@@ -59,7 +59,7 @@ class cftp_customiser {
 		// remove static front page
 		$wp_customize->remove_section( 'static_front_page' );
 
-		// rename colours  
+		// rename colours
 		$wp_customize->get_section( 'colors' )->title = __( 'Colours', 'bootiful' );
 
 		// rename navigation
@@ -81,18 +81,18 @@ class cftp_customiser {
 		$wp_customize->add_setting( 'brandprimary',
 			array(
 				'default' => '#fff'
-			) 
-		);      
-	        
+			)
+		);
+
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'brandprimary', 
+			$wp_customize,
+			'brandprimary',
 			array(
 				'label' => __( 'Brand Primary Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'brandprimary',
 				'priority' => 13
-			) 
+			)
 		) );
 
 
@@ -100,36 +100,36 @@ class cftp_customiser {
 		$wp_customize->add_setting( 'brandsecondary',
 			array(
 				'default' => '#fff'
-			) 
-		);      
-	        
+			)
+		);
+
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'brandsecondary', 
+			$wp_customize,
+			'brandsecondary',
 			array(
 				'label' => __( 'Brand Secondary Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'brandsecondary',
 				'priority' => 14
-			) 
+			)
 		) );
 
 	  	// body font colour
 		$wp_customize->add_setting( 'textcol',
 			array(
 				'default' => '#000000'
-			) 
-		);      
-	        
+			)
+		);
+
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'textcol', 
+			$wp_customize,
+			'textcol',
 			array(
 				'label' => __( 'Text Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'textcol',
 				'priority' => 15
-			) 
+			)
 		) );
 
 	  	// link colour
@@ -137,174 +137,174 @@ class cftp_customiser {
 			array(
 				'default' => '#0000EE',
 				'transport' => 'refresh'
-			) 
-		);      
-	        
+			)
+		);
+
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'linkcol', 
+			$wp_customize,
+			'linkcol',
 			array(
 				'label' => __( 'Link Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'linkcol',
 				'priority' => 16
-			) 
+			)
 		) );
 
 		// link hover colour
 		$wp_customize->add_setting( 'linkhovercol',
 			array(
 				'default' => '#000000'
-			) 
-		);      
+			)
+		);
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'linkhovercol', 
+			$wp_customize,
+			'linkhovercol',
 			array(
 				'label' => __( 'Link Hover Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'linkhovercol',
 				'priority' => 17
-			) 
+			)
 		) );
 
 		// success colour
 		$wp_customize->add_setting( 'brandsuccess',
 			array(
 				'default' => '#5cb85c'
-			) 
-		);      
+			)
+		);
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'brandsuccess', 
+			$wp_customize,
+			'brandsuccess',
 			array(
 				'label' => __( 'Success Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'brandsuccess',
 				'priority' => 18
-			) 
+			)
 		) );
 
 		// warning colour
 		$wp_customize->add_setting( 'brandwarning',
 			array(
 				'default' => '#f0ad4e'
-			) 
-		);      
+			)
+		);
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'brandwarning', 
+			$wp_customize,
+			'brandwarning',
 			array(
 				'label' => __( 'Warning Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'brandwarning',
 				'priority' => 19
-			) 
+			)
 		) );
 
 		// danger colour
 		$wp_customize->add_setting( 'branddanger',
 			array(
 				'default' => '#d9534f'
-			) 
-		);      
+			)
+		);
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'branddanger', 
+			$wp_customize,
+			'branddanger',
 			array(
 				'label' => __( 'Danger Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'branddanger',
 				'priority' => 20
-			) 
+			)
 		) );
 
 		// info colour
 		$wp_customize->add_setting( 'brandinfo',
 			array(
 				'default' => '#5bc0de'
-			) 
-		);      
+			)
+		);
 
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 
-			'brandinfo', 
+			$wp_customize,
+			'brandinfo',
 			array(
 				'label' => __( 'Info Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'brandinfo',
 				'priority' => 21
-			) 
+			)
 		) );
 
 		// typography
-		$wp_customize->add_section( 'typography', 
+		$wp_customize->add_section( 'typography',
 			array(
 				'title' => __( 'Typography', 'bootiful' ),
 				'priority' => 35,
 				'capability' => 'edit_theme_options',
-			) 
+			)
 		);
 
 		// heading font
-		$wp_customize->add_setting('headingfont', 
+		$wp_customize->add_setting('headingfont',
 			array(
 				'default' => 'a1',
 			)
 		);
 
 		$wp_customize->add_control(new Google_Font_Custom_Control(
-			$wp_customize, 
-			'headingfont', 
+			$wp_customize,
+			'headingfont',
 			array(
-				'label' => __( 'Heading Font', 'bootiful' ), 
-				'section' => 'typography', 
-				'settings' => 'headingfont', 
+				'label' => __( 'Heading Font', 'bootiful' ),
+				'section' => 'typography',
+				'settings' => 'headingfont',
 				'priority' => 10
-			) 
+			)
 		) );
 
 		// heading font weight
-		$wp_customize->add_setting('headingfontweight', 
+		$wp_customize->add_setting('headingfontweight',
 			array(
 				'default' => 'normal',
 			)
 		);
-		
+
 		$wp_customize->add_control(new Google_Font_Weight_Custom_Control(
-			$wp_customize, 
-			'headingfontweight', 
+			$wp_customize,
+			'headingfontweight',
 			array(
-				'label' => __( 'Weight', 'bootiful' ), 
-				'section' => 'typography', 
+				'label' => __( 'Weight', 'bootiful' ),
+				'section' => 'typography',
 				'visibility' => 'headingfont',
-				'settings' => 'headingfontweight', 
+				'settings' => 'headingfontweight',
 				'priority' => 10
-			) 
+			)
 		) );
 
 		// body font
 		$fonts = $this->get_fonts();
 		$font_list = array();
-		foreach ($fonts as $key => $font) { 
-			$font_list[$key] = $font['name'];			
+		foreach ($fonts as $key => $font) {
+			$font_list[$key] = $font['name'];
 		}
 
-		$wp_customize->add_setting('bodyfont', 
+		$wp_customize->add_setting('bodyfont',
 			array(
 				'default' => 'a1',
 			)
 		);
 
-		$wp_customize->add_control('bodyfont', 
-			array( 
-				'label' => __( 'Body Font', 'bootiful' ), 
-				'section' => 'typography', 
-				'settings' => 'bodyfont', 
+		$wp_customize->add_control('bodyfont',
+			array(
+				'label' => __( 'Body Font', 'bootiful' ),
+				'section' => 'typography',
+				'settings' => 'bodyfont',
 				'type' => 'select',
 				'choices' => $font_list,
 				'priority' => 11
@@ -334,85 +334,85 @@ class cftp_customiser {
 		) );
 
 		// Logo
-		$wp_customize->add_setting('logo', 
+		$wp_customize->add_setting('logo',
 			array(
 
 			)
 		);
-		
+
 		$wp_customize->add_control(new WP_Customize_Image_Control(
-			$wp_customize, 
-			'logo', 
-			array( 
-				'label' => __( 'Logo', 'bootiful' ), 
-				'section' => 'background_image', 
+			$wp_customize,
+			'logo',
+			array(
+				'label' => __( 'Logo', 'bootiful' ),
+				'section' => 'background_image',
 				'settings' => 'logo',
 				'priority' => 10
 			)
 		) );
 
 		// retina logo
-		$wp_customize->add_setting('logoretina', 
+		$wp_customize->add_setting('logoretina',
 			array(
 
 			)
 		);
 
 		$wp_customize->add_control(new WP_Customize_Image_Control(
-			$wp_customize, 
-			'logoretina', 
-			array( 
-				'label' => __( 'Logo @2x', 'bootiful' ), 
-				'section' => 'background_image', 
+			$wp_customize,
+			'logoretina',
+			array(
+				'label' => __( 'Logo @2x', 'bootiful' ),
+				'section' => 'background_image',
 				'settings' => 'logoretina',
 				'priority' => 11
 			)
 		) );
 
 		// favicon
-		$wp_customize->add_setting('favicon', 
+		$wp_customize->add_setting('favicon',
 			array(
 
 			)
 		);
 
 		$wp_customize->add_control(new WP_Customize_Upload_Control(
-			$wp_customize, 
-			'favicon', 
-			array( 
-				'label' => __( 'Favicon (.ico 32px by 32px)', 'bootiful' ), 
-				'section' => 'background_image', 
+			$wp_customize,
+			'favicon',
+			array(
+				'label' => __( 'Favicon (.ico 32px by 32px)', 'bootiful' ),
+				'section' => 'background_image',
 				'settings' => 'favicon',
 				'priority' => 14
 			)
 		) );
 
 		// touch icon
-		$wp_customize->add_setting('touchicon', 
+		$wp_customize->add_setting('touchicon',
 			array(
 
 			)
 		);
 
 		$wp_customize->add_control(new WP_Customize_Image_Control(
-			$wp_customize, 
-			'touchicon', 
-			array( 
-				'label' => __( 'Touch Icon (152px by 152px)', 'bootiful' ), 
-				'section' => 'background_image', 
+			$wp_customize,
+			'touchicon',
+			array(
+				'label' => __( 'Touch Icon (152px by 152px)', 'bootiful' ),
+				'section' => 'background_image',
 				'settings' => 'touchicon',
 				'priority' => 15
 			)
 		) );
 
 		// layout
-		$wp_customize->add_section( 'layout', 
+		$wp_customize->add_section( 'layout',
 			array(
 				'title' => __( 'Layout', 'bootiful' ),
 				'priority' => 35,
 				'capability' => 'edit_theme_options',
 				'description' => __('Layout theme options.', 'bootiful'),
-			) 
+			)
 		);
 	}
 
@@ -432,24 +432,24 @@ class cftp_customiser {
 
 	/**
 	 * css
-	 * 
+	 *
 	 * Enqueue the correct Google font for typography settings
-	 * 
+	 *
 	 * @author Scott Evans
-	 * @return void  
+	 * @return void
 	 */
 	function css() {
 
 		$heading_font = get_theme_mod( 'headingfont', 'Cabin' );
 		$heading_font_weight = get_theme_mod( 'headingfontweight', '700' );
 		$body_font = get_theme_mod( 'bodyfont', 'a1' );
-		
+
 		$allfonts = $this->get_fonts();
 
 		// a bug fix when customising a font change - reset the weight as the controls are independent
 		if ($this->is_customising()) {
 			$variants = array();
-			foreach ($allfonts as $key => $font) { 
+			foreach ($allfonts as $key => $font) {
 				if ($font['name'] == $heading_font) {
 					foreach ($font['variants'] as $variant) {
 						$variants[] = $variant;
@@ -462,34 +462,34 @@ class cftp_customiser {
 		}
 
 		$gfonts = array();
-		
+
 		if ( ! $this->string_search('(system)', $allfonts[$heading_font]['name'] ) ) {
 			$gfonts[] = $heading_font . ':' . $heading_font_weight;
 		}
-		
+
 		if ( ! $this->string_search('(system)', $allfonts[$body_font]['name'] ) ) {
 			$gfonts[] = $body_font;
 		}
-		
-		if ( ! empty( $gfonts ) ) { 
+
+		if ( ! empty( $gfonts ) ) {
 			$gfonts = array_unique($gfonts);
 			$getfonts = implode('|', $gfonts);
-			wp_register_style('google-fonts', '//fonts.googleapis.com/css?family='.$getfonts, '', CFTP_CACHE_BUST, 'all'); 
+			wp_register_style('google-fonts', '//fonts.googleapis.com/css?family='.$getfonts, '', CFTP_CACHE_BUST, 'all');
 			wp_enqueue_style('google-fonts');
-		}		
+		}
 	}
 
 	/**
 	 * save
 	 *
 	 * Fires when theme customiser is saved, calculates image size
-	 * 
+	 *
 	 * @return void
 	 */
 	function save() {
-		
-		$size = $this->image_size( get_theme_mod('logo', '') ); 
-		$sizesmall = $this->image_size( get_theme_mod('logosmall', '') ); 
+
+		$size = $this->image_size( get_theme_mod('logo', '') );
+		$sizesmall = $this->image_size( get_theme_mod('logosmall', '') );
 
 		if ( ! empty( $size ) )
 			set_theme_mod( 'logosize', $size );
@@ -502,7 +502,7 @@ class cftp_customiser {
 		$heading_font = get_theme_mod( 'headingfont', 'Cabin' );
 		$allfonts = $this->get_fonts();
 		$variants = array();
-		foreach ($allfonts as $key => $font) { 
+		foreach ($allfonts as $key => $font) {
 			if ($font['name'] == $heading_font) {
 				foreach ($font['variants'] as $variant) {
 					$variants[] = $variant;
@@ -516,9 +516,9 @@ class cftp_customiser {
 
 	/**
 	 * background_size_output
-	 * 
+	 *
 	 * not passed to less as it uses core background image functionality
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @return void
 	 */
@@ -529,20 +529,20 @@ class cftp_customiser {
 
 	/**
 	 * less_vars
-	 * 
+	 *
 	 * Register variables with the PHP LESS compiler, pass in theme customiser settings, widths etc.
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @param  array $vars
 	 * @param  string $handle is a reference to the handle used with wp_enqueue_style()
-	 * @return array $vars 
-	 * @todo add background image     
+	 * @return array $vars
+	 * @todo add background image
 	 */
 	function less_vars($vars, $handle) {
 
 		global $content_width;
 
-		//$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
+		$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
 		$vars['brandprimary'] = get_theme_mod( 'brandprimary', '#ff0000');
 		$vars['brandsecondary'] = get_theme_mod( 'brandsecondary', '#bcbcbc');
 		$vars['textcol'] = get_theme_mod( 'textcol', '#bcbcbc');
@@ -571,7 +571,7 @@ class cftp_customiser {
 			$vars['logoheight'] = $logosize['height'];
 		} else {
 			$vars['logowidth'] = 0;
-			$vars['logoheight'] = 0;	
+			$vars['logoheight'] = 0;
 		}
 
 		return $vars;
@@ -580,7 +580,7 @@ class cftp_customiser {
 
 	/**
 	 * is_customising?
-	 * 
+	 *
 	 * Are we currently customising the theme?
 	 * @author Scott Evans
 	 * @return boolean
@@ -604,9 +604,9 @@ class cftp_customiser {
 
 	/**
 	 * cache_bust
-	 * 
+	 *
 	 * Force the browser to cache bust the compiled CSS
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @param  int $time
 	 * @return int $time
@@ -615,22 +615,22 @@ class cftp_customiser {
 
 		$time = time();
 		return $time;
-	
+
 	}
 
 	/**
 	 * merge_theme_mods
-	 * 
+	 *
 	 * Filter the option from the option table when edits have been performed in the customiser.
-	 * 
+	 *
 	 * @author Scott Evans
-	 * @param  array $option 
+	 * @param  array $option
 	 * @return array $option
 	 */
 	function merge_theme_mods($option) {
 
 		if ( ! isset( $_POST['customized'] ) ) return $option;
-		
+
 		if (! is_array( $option ) ) return $option;
 
 		$new = json_decode( wp_unslash( $_POST['customized'] ), true );
@@ -640,7 +640,7 @@ class cftp_customiser {
 
 		// merge all other keys
 		foreach ( $option as $key => $o ) {
-			
+
 			if ( ! isset( $new[$key] ) ) continue;
 
 			if ( $new[$key] !== $o ) {
@@ -657,27 +657,27 @@ class cftp_customiser {
 
 	/**
 	 * get_fonts
-	 * 
+	 *
 	 * System & Google Web Fonts saved as transient.
-	 * 
+	 *
 	 * @author Scott Evans
-	 * @param  string $sort 
-	 * @return array $font_list    
+	 * @param  string $sort
+	 * @return array $font_list
 	 */
 	function get_fonts($sort = 'alpha') {
-		
+
 		// sort options
 		// alpha: Sort the list alphabetically
 		// date: Sort the list by date added (most recent font added or updated first)
 		// popularity: Sort the list by popularity (most popular family first)
 		// style: Sort the list by number of styles available (family with most styles first)
 		// trending: Sort the list by families seeing growth in usage (family seeing the most growth first)
-		
-		if (false === ($font_list = get_transient('cftp_google_fonts_'.$sort))) { 
-			
+
+		if (false === ($font_list = get_transient('cftp_google_fonts_'.$sort))) {
+
 			// system fonts - the stacks are available in mixins.less and simple array references are used for compatibility with LESS guards
 			$font_list['a1'] = array( 'name' => 'Arial (system)', 'variants' => array('normal') );
-			$font_list['a2'] = array( 'name' => 'Arial Rounded (system)', 'variants' => array('normal') ); 
+			$font_list['a2'] = array( 'name' => 'Arial Rounded (system)', 'variants' => array('normal') );
 			$font_list['b1'] = array( 'name' => 'Baskerville (system)', 'variants' => array('normal') );
 			$font_list['c1'] = array( 'name' => 'Cambria (system)', 'variants' => array('normal') );
 			$font_list['c2'] = array( 'name' => 'Centry Gothic (system)', 'variants' => array('normal') );
@@ -689,11 +689,11 @@ class cftp_customiser {
 			$font_list['t1'] = array( 'name' => 'Tahoma (system)', 'variants' => array('normal') );
 			$font_list['t2'] = array( 'name' => 'Trebuchet MS (system)', 'variants' => array('normal') );
 			$font_list['v1'] = array( 'name' => 'Verdana (system)', 'variants' => array('normal') );
-						
+
 			// google fonts
 			$api_key = 'AIzaSyCTTbK5s0or8LmQfUCNhndMfSvyz-f6jqk';
 			$gwf_uri = "https://www.googleapis.com/webfonts/v1/webfonts?key=" . $api_key . "&sort=" . $sort;
-			
+
 			// should use wp_remote_post
 			$raw = wp_remote_get( $gwf_uri, array( 'timeout' => 10 ) );
 
@@ -707,28 +707,28 @@ class cftp_customiser {
 						'variants' => $font->variants
 					);
 				}
-				
+
 				// cache for 3 days
 				set_transient('cftp_google_fonts_' . $sort, $font_list, 60 * 60 * 24 * 3);
 			}
 		}
-		
+
 		// return the saved list of Google Web Fonts
 		return $font_list;
 
-	}	
+	}
 
 	/**
 	 * font_stack
-	 * 
+	 *
 	 * Covert a font from the function above into a font stack
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @param  string $font
-	 * @return string $font_stack    
+	 * @return string $font_stack
 	 */
 	function font_stack($font) {
-		
+
 		switch( $font ) {
 
 			case 'a1':
@@ -787,19 +787,19 @@ class cftp_customiser {
 				$font_stack = $font;
 
 		}
-		
+
 		return $font_stack;
-	}	
+	}
 
 	/**
 	 * string_search
-	 * 
+	 *
 	 * Search a $string for $needle.
-	 * 
+	 *
 	 * @author Scott Evans
 	 * @param  string $needle
 	 * @param  string $string
-	 * @return bool        
+	 * @return bool
 	 */
 	function string_search( $needle, $string ) {
 		return (strpos($string, $needle) !== false);
@@ -809,12 +809,12 @@ class cftp_customiser {
 	 * image_size
 	 *
 	 * Calculate an image width and height from URL
-	 * 
+	 *
 	 * @param  string $image url to image
 	 * @return array $size_return image size as array
 	 */
 	function image_size( $image ) {
-		
+
 		$size_return = array();
 
 		if ($image == '') return $size_return;
@@ -824,7 +824,7 @@ class cftp_customiser {
 		$imageurl = str_replace(array('http://', 'https://'), '', $image);
 		$uploadurl = str_replace(array('http://', 'https://'), '', $upload['baseurl']);
 		$image = str_replace($uploadurl, $upload['basedir'], $imageurl);
-		
+
 		// bail if the file no longer exists
 		if ( ! file_exists( $image ) ) return $size_return;
 
@@ -867,10 +867,10 @@ if (class_exists('WP_Customize_Control')) {
 				<label>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 					<select name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>" class="widefat font-select" <?php $this->link(); ?>>
-						<?php 
+						<?php
 						$fonts = $cftp_customiser->get_fonts();
-						foreach ($fonts as $key => $font) { 
-							
+						foreach ($fonts as $key => $font) {
+
 							printf('<option value="%s" data-weights="%s" %s>%s</option>', $font['name'], implode(',', $font['variants']), selected($this->value(), $font['name'], false), $font['name']);
 
 						}
@@ -902,10 +902,10 @@ if (class_exists('WP_Customize_Control')) {
 				<label>
 					<span class="customzie-control-title"><?php echo esc_html( $this->label ); ?></span>
 					<select name="<?php echo $this->id; ?>" id="<?php echo $this->id; ?>" class="widefat variant-select" <?php $this->link(); ?>>
-						<?php 
+						<?php
 						$fonts = $cftp_customiser->get_fonts();
 						$variants = array();
-						foreach ($fonts as $key => $font) { 
+						foreach ($fonts as $key => $font) {
 							foreach ($font['variants'] as $variant) {
 								if (! in_array($variant, $variants)) {
 									$variants[] = $variant;
@@ -913,9 +913,9 @@ if (class_exists('WP_Customize_Control')) {
 							}
 						}
 						?>
-						<?php foreach ($variants as $variant) { 
+						<?php foreach ($variants as $variant) {
 							printf('<option value="%s" %s>%s</option>', $variant, selected($this->value(), $variant, false), $variant);
-						} 
+						}
 						?>
 					</select>
 				</label>
