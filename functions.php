@@ -21,7 +21,7 @@
 Notes:
 ----------------------------------------
 tweak customiser - https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
-nav - https://github.com/twittem/wp-bootstrap-navwalker
+				 - https://github.com/philipnewcomer/Customizer-Framework
 add vcard spec data - http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#vcard
 */
 
@@ -119,6 +119,11 @@ if (is_admin()) { load_template( get_template_directory() . '/assets/inc/editor.
  * only load front end functions for theme
  */
 if (!is_admin()) { load_template( get_template_directory() . '/assets/inc/theme.php' ); }
+
+/**
+ * bootstrap menu walker
+ */
+if (!is_admin()) { load_template( get_template_directory() . '/assets/inc/nav.php' ); }
 
 /**
  * cftp_admin_css_setup

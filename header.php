@@ -43,9 +43,16 @@
 					wp_nav_menu(
 						array(
 							'menu' => 'navigation',
-							'theme_location' => 'navigation',
-							'depth' => 2,
-							'container_class' => 'menu-navigation'
+							'theme_location' 	=> 'navigation',
+							'depth' 			=> 2,
+							'container_class'   => 'menu-navigation'
+							// example menu with bootstrap walker
+							//'container'         => 'div',
+							//'container_class'   => 'collapse navbar-collapse',
+							//'container_id'      => 'bs-example-navbar-collapse-1',
+							//'menu_class'        => 'nav navbar-nav',
+							//'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+							//'walker'            => new wp_bootstrap_navwalker())
 						)
 					);
 					?>
