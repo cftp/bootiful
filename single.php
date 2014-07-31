@@ -11,7 +11,13 @@
 				<?php tha_entry_top(); ?>
 
 				<header class="page-header">
+
+					<?php tha_entry_header_top(); ?>
+
 					<h1 class="entry-title" itemprop="headline"><?php the_title() ?></h1>
+
+					<?php tha_entry_header_bottom(); ?>
+
 				</header>
 
 				<div class="entry-content" itemprop="articleBody">
@@ -20,6 +26,9 @@
 				</div>
 
 				<footer>
+
+					<?php tha_entry_footer_top(); ?>
+
 					<p class="entry-meta entry-description">
 					<?php
 					printf(__('This entry was posted by %1$s on %2$s and is filed under %3$s. ', 'bootiful'),
@@ -62,6 +71,9 @@
 					}
 					?>
 					</p>
+
+					<?php tha_entry_footer_bottom(); ?>
+
 				</footer>
 
 				<nav class="pagination" role="navigation">

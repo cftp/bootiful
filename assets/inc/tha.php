@@ -142,6 +142,21 @@ function tha_entry_bottom() {
 	do_action( 'tha_entry_bottom' );
 }
 
+function tha_entry_header_top() {
+	do_action( 'tha_entry_header_top' );
+}
+
+function tha_entry_header_bottom() {
+	do_action( 'tha_entry_header_bottom' );
+}
+
+function tha_entry_footer_top() {
+	do_action( 'tha_entry_footer_top' );
+}
+
+function tha_entry_footer_bottom() {
+	do_action( 'tha_entry_footer_bottom' );
+}
 /**
 * Comments block hooks
 *
