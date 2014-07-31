@@ -135,7 +135,7 @@ if (!is_admin()) { load_template( get_template_directory() . '/assets/inc/nav.ph
 /**
  * theme hook alliance
  */
-if (!is_admin()) { load_template(get_template_directory() . '/assets/inc/thahooks.php'); }
+if (!is_admin()) { load_template(get_template_directory() . '/assets/inc/tha.php'); }
 
 
 /**
