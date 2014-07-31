@@ -1,4 +1,4 @@
-/* 
+/*
 
 styles.less
 contents:
@@ -26,7 +26,7 @@ contents:
 @import "_wordpress.less";
 
 // custom bootstrap styles
-@import "_bootstrap.less"; 
+@import "_bootstrap.less";
 
 // gravity forms support - disable bundled styles
 /*@import "_gravityforms.less";*/
@@ -52,11 +52,13 @@ body
 
 #header-wrapper
 	{
-	background: fadeout(@brand-primary, 30%);
-	
+	background: fadeout(@brand-primary, 90%);
+	margin-bottom: @line-height-computed;
+
 	#header
 		{
 		.bootiful-wrapper();
+		text-align: center;
 
 		.menu-navigation
 			{
@@ -70,6 +72,20 @@ body
 				}
 			}
 		}
+	}
+
+#site-title
+	{
+	padding-top: @line-height-computed * 2;
+	font-size: @font-size-base + 20px;
+	font-weight: bold;
+	display: block;
+	}
+
+#site-description
+	{
+	display: block;
+	padding-bottom: @line-height-computed * 2;
 	}
 
 #content-wrapper
@@ -112,40 +128,121 @@ body
 		{
 		.panel-heading();
 		.panel-title();
+		padding: @line-height-computed/2;
 		}
 	}
+
+// comments
+
+.comment-list
+	{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li
+		{
+		font-size: @font-size-base - 2px;
+
+		article
+			{
+			border-bottom: 1px solid @gray-lighter;
+			padding-bottom: @line-height-computed;
+			margin-bottom: @line-height-computed;
+			}
+
+		#commentform
+			{
+			margin-bottom: @line-height-computed;
+			}
+		}
+
+	.children
+		{
+		list-style: none;
+		}
+
+	.edit-link
+		{
+		display: none;
+		}
+
+	.avatar
+		{
+		float: left;
+		margin-right: @line-height-computed / 2;
+		}
+
+	.comment-metadata a
+		{
+		text-transform: uppercase;
+		font-size: @font-size-base - 6px;
+		}
+
+	.comment-content
+		{
+		margin-top: @line-height-computed / 2;
+		clear: both;
+		}
+	}
+
+#commentform
+	{
+	.form-allowed-tags
+		{
+		.sr-only();
+		}
+
+	.form-submit
+		{
+		margin: 0;
+		}
+
+	.logged-in-as
+		{
+		.alert();
+		.alert-info();
+		}
+
+	.form-submit #submit
+		{
+		.btn();
+		.btn-primary();
+		}
+	}
+
 
 /* 3. Media Queries
 --------------------------------------------------------------------------------------- */
 
 // larger mobile devices like galaxy note
 @media only screen and (min-width: 481px) {
-	
-	// styles in 481up.less 
+
+	// styles in 481up.less
 	//@import "481up.less";
 
 }
 
 // tablets and smaller laptops
 @media only screen and (min-width: 768px) {
-	
-	// styles in 768up.less 
+
+	// styles in 768up.less
 	//@import "768up.less";
 
-} 
+}
 
 // desktop, normal laptops
 @media only screen and (min-width: 1030px) {
-	
-	// styles in 1030up.less 
+
+	// styles in 1030up.less
 	//@import "1030up.less";
 
 }
 
 // larger viewing sizes, desktops, full screen viewers?
 @media only screen and (min-width: 1240px) {
-	
-	// styles in 1240up.less 
+
+	// styles in 1240up.less
 	//@import "1240up.less";
 
 }
@@ -162,54 +259,54 @@ only screen and (min-device-pixel-ratio: 1.5),
 only screen and (min-resolution: 144dpi),
 only screen and (min-resolution: 2dppx)
 	{
-	//@import "2x.less"; 
-	} 
-
-// Smartphones (portrait and landscape)
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
-	{
-	/* prevent iOS, WinMobile from adjusting font size */
-  	html 
-  		{ 
-  		-webkit-text-size-adjust:none;
-  		-ms-text-size-adjust:none; 
-  		}
-  		
+	//@import "2x.less";
 	}
 
-// Smartphones (landscape) 
-@media only screen 
-and (min-width : 321px) 
+// Smartphones (portrait and landscape)
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+	{
+	/* prevent iOS, WinMobile from adjusting font size */
+  	html
+  		{
+  		-webkit-text-size-adjust:none;
+  		-ms-text-size-adjust:none;
+  		}
+
+	}
+
+// Smartphones (landscape)
+@media only screen
+and (min-width : 321px)
 	{
 	}
 
 // Smartphones (portrait)
-@media only screen 
-and (max-width : 320px) 
+@media only screen
+and (max-width : 320px)
 	{
 	}
 
 // iPads (portrait and landscape)
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 	{
 	}
 
 // iPads (landscape)
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) 
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape)
 	{
 	}
 
 // iPads (portrait)
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) 
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait)
 	{
 	}
