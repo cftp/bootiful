@@ -5,6 +5,8 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes() ?> class="no-js"> <!--<![endif]-->
 <head>
 
+<?php tha_head_top(); ?>
+
 <!-- utf-8 -->
 <meta charset="<?php bloginfo('charset') ?>" />
 
@@ -14,12 +16,16 @@
 <!-- set mobile viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<?php tha_head_bottom(); ?>
+
 <!-- wp_head -->
 <?php wp_head(); ?>
 
 </head>
 
 <body <?php body_class()?>>
+
+	<?php tha_body_top(); ?>
 
 	<div id="accessibility" class="sr-only">
 		<a href="#content" class="skip-link" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
@@ -29,7 +35,11 @@
 
 		<div id="header-wrapper">
 
+			<?php tha_header_before(); ?>
+
 			<header id="header" role="banner">
+
+				<?php tha_header_top(); ?>
 
 				<div id="site-info" itemscope itemtype="http://schema.org/Organization">
 					<a id="site-title" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo('name') ); ?>" rel="home" class="logo" itemprop="url"><span itemprop="name"><?php bloginfo('name'); ?></span></a>
@@ -60,10 +70,18 @@
 				</nav><!--  #navigation -->
 				<?php } ?>
 
+				<?php tha_header_bottom(); ?>
+
 			</header><!-- #header -->
+
+			<?php tha_header_after(); ?>
 
 		</div><!-- #header-wrapper -->
 
 		<div id="content-wrapper">
 
+			<?php tha_content_before(); ?>
+
 			<div id="content" role="main">
+
+				<?php tha_content_top(); ?>

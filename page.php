@@ -4,7 +4,11 @@
 
 		<?php if ( have_posts() ) : the_post(); ?>
 
+			<?php tha_entry_before(); ?>
+
 			<article <?php post_class() ?> role="article" itemscope itemtype="http://schema.org/WebPage">
+
+				<?php tha_entry_top(); ?>
 
 				<header class="page-header">
 					<h1 class="entry-title" itemprop="name"><?php the_title() ?></h1>
@@ -67,7 +71,11 @@
 				}
 				?>
 
+				<?php tha_entry_bottom(); ?>
+
 			</article>
+
+			<?php tha_entry_after(); ?>
 
 		<?php endif; ?>
 

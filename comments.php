@@ -8,6 +8,8 @@ if ( post_password_required() ) {
 	return;
 }
 ?>
+<?php tha_comments_before(); ?>
+
 <div id="comments" class="comments-area">
 
 	<?php // You can start editing here -- including this comment! ?>
@@ -57,3 +59,5 @@ if ( post_password_required() ) {
 	<?php comment_form(); ?>
 
 </div><!-- #comments -->
+
+<?php tha_comments_after(); ?>

@@ -1,4 +1,8 @@
+<?php tha_entry_before(); ?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<?php tha_entry_top(); ?>
 
 	<?php if ( has_post_thumbnail() ) { ?>
 		<a href="<?php the_permalink(); ?>" rel="bookmark" class="pull-left">
@@ -37,4 +41,8 @@
 
 	</div><!-- .media-body -->
 
+	<?php tha_entry_bottom(); ?>
+
 </article><!-- #post-<?php the_ID(); ?> -->
+
+<?php tha_entry_after(); ?>

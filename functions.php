@@ -22,6 +22,7 @@ Notes:
 ----------------------------------------
 tweak customiser - https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
 				 - https://github.com/philipnewcomer/Customizer-Framework
+				 - strip google fonts stuff - should be its own control away from here
 add vcard spec data - http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#vcard
 */
 
@@ -44,6 +45,9 @@ function cftp_theme_setup() {
 	// add support for custom backgrounds
 	add_theme_support( 'custom-background' );
 
+	// add support for custom header http://codex.wordpress.org/Function_Reference/add_theme_support#Custom_Header
+	// add_theme_support( 'custom-header' );
+
 	// add feed links for comments and posts to <head>
 	add_theme_support( 'automatic-feed-links' );
 
@@ -61,6 +65,9 @@ function cftp_theme_setup() {
 		'gallery',
 		'captions'
 	) );
+
+	// add theme hook alliance support (https://github.com/zamoose/themehookalliance) - filterable by child theme
+	add_theme_support('tha_hooks', apply_filters('bootiful_tha_hooks', array('head', 'body', 'header','content','entry','comments','sidebar','footer')));
 
 	// register navigation menus for this theme
 	register_nav_menus( apply_filters( 'cftp_register_menu', array(
@@ -124,6 +131,12 @@ if (!is_admin()) { load_template( get_template_directory() . '/assets/inc/theme.
  * bootstrap menu walker
  */
 if (!is_admin()) { load_template( get_template_directory() . '/assets/inc/nav.php' ); }
+
+/**
+ * theme hook alliance
+ */
+if (!is_admin()) { load_template(get_template_directory() . '/assets/inc/thahooks.php'); }
+
 
 /**
  * cftp_admin_css_setup

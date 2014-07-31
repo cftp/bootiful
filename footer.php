@@ -1,10 +1,18 @@
+				<?php tha_content_bottom(); ?>
+
 			</div><!-- #content -->
+
+			<?php tha_content_after(); ?>
 
 		</div><!-- #content-wrapper -->
 
 		<div id="footer-wrapper">
 
+			<?php tha_footer_before(); ?>
+
 			<footer id="footer" role="contentinfo">
+
+				<?php tha_footer_top(); ?>
 
 				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
 				<nav id="footer-navigation" role="navigation">
@@ -23,7 +31,11 @@
 				</nav><!--  #footer-navigation -->
 				<?php } ?>
 
+				<?php tha_footer_bottom(); ?>
+
 			</footer><!-- #footer -->
+
+			<?php tha_footer_after(); ?>
 
 		</div><!-- #footer-wrapper -->
 
@@ -32,6 +44,8 @@
 	<div id="wp-footer">
 		<?php wp_footer(); ?>
 	</div><!-- #wp-footer -->
+
+	<?php tha_body_bottom(); ?>
 
 </body>
 </html>
