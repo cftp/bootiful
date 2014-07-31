@@ -14,7 +14,7 @@
 
 				<?php tha_footer_top(); ?>
 
-				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
+				<?php if ( has_nav_menu( 'footer' ) ) { ?>
 				<nav id="footer-navigation" role="navigation">
 
 					<?php
