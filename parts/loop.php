@@ -1,6 +1,6 @@
 <?php tha_entry_before(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting" <?php post_data(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting" <?php post_attributes(); ?>>
 
 	<?php tha_entry_top(); ?>
 

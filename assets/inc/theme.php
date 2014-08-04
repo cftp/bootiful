@@ -126,27 +126,27 @@ function cftp_body_class($classes) {
 add_filter('body_class','cftp_body_class');
 
 /**
- * body_data
+ * body_attributes
  *
- * Add data attributes to the body
+ * Add custom attributes to the body
  *
  * @param  array $data_attrs
  * @return void
  */
-if (! function_exists( 'body_data' ) ) {
-	function body_data( $data_attrs = false ) {
+if (! function_exists( 'body_attributes' ) ) {
+	function body_attributes( $attrs = false ) {
 
 		// initialise the array
-		if ( ! $data_attrs )
-			$data_attrs = array();
+		if ( ! $attrs )
+			$attrs = array();
 
 		// provide hook
-		$data_attrs = apply_filters( 'body_data', $data_attrs );
+		$attrs = apply_filters( 'body_attributes', $attrs );
 
 		// output
-		if ( ! empty( $data_attrs ) ) {
+		if ( ! empty( $attrs ) ) {
 			$output = '';
-			foreach ($data_attrs as $key => $value) {
+			foreach ($attrs as $key => $value) {
 				$output .= $key . '="' . esc_attr( $value ) .'" ';
 			}
 			echo trim($output);
@@ -194,29 +194,29 @@ function cftp_post_class($classes){
 add_filter('post_class', 'cftp_post_class', 20);
 
 /**
- * post_data
+ * post_attributes
  *
- * Add data attributes to each post
+ * Add custom attributes to each post
  *
  * @param  array $data_attrs
  * @return void
  */
-if (! function_exists( 'post_data' ) ) {
-	function post_data( $data_attrs = false ) {
+if (! function_exists( 'post_attributes' ) ) {
+	function post_attributes( $attrs = false ) {
 
 		global $post;
 
 		// initialise the array
-		if ( ! $data_attrs )
-			$data_attrs = array();
+		if ( ! $attrs )
+			$attrs = array();
 
 		// provide hook
-		$data_attrs = apply_filters( 'post_data', $data_attrs );
+		$attrs = apply_filters( 'post_attributes', $attrs );
 
 		// output
-		if ( ! empty( $data_attrs ) ) {
+		if ( ! empty( $attrs ) ) {
 			$output = '';
-			foreach ($data_attrs as $key => $value) {
+			foreach ($attrs as $key => $value) {
 				$output .= $key . '="' . esc_attr( $value ) .'" ';
 			}
 			echo trim($output);
