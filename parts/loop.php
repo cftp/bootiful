@@ -1,6 +1,6 @@
 <?php tha_entry_before(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting" <?php post_data(); ?>>
 
 	<?php tha_entry_top(); ?>
 
@@ -13,7 +13,7 @@
 	<div class="media-body">
 
 		<header class="entry-header">
-			
+
 			<?php tha_entry_header_top(); ?>
 
 			<h2 class="entry-title media-heading" itemprop="headline"><a href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?></a></h2>

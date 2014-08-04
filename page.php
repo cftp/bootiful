@@ -6,7 +6,7 @@
 
 			<?php tha_entry_before(); ?>
 
-			<article <?php post_class() ?> role="article" itemscope itemtype="http://schema.org/WebPage">
+			<article <?php post_class() ?> role="article" itemscope itemtype="http://schema.org/WebPage" <?php post_data(); ?>>
 
 				<?php tha_entry_top(); ?>
 
