@@ -77,6 +77,19 @@ function cftp_remove_recent_comments_style() {
 }
 
 /**
+ * cftp_dequeue_jquery_migrate
+ * 
+ * @param  object $scripts
+ * @return void
+ */
+add_filter( 'wp_default_scripts', 'cftp_dequeue_jquery_migrate' );
+
+function cftp_dequeue_jquery_migrate( $scripts ){
+	$scripts->remove( 'jquery');
+	$scripts->add( 'jquery', false, array( 'jquery-core' ) );
+}
+
+/**
  * cftp_body_class
  *
  * Filter the body class to be more meaningful
@@ -105,16 +118,16 @@ function cftp_body_class($classes) {
 	$classes[] = 'h' . gmdate( 'H', $t ); // Hour
 
 	// parent section
-    if (is_page()) {
-        if ($post->post_parent) {
-        	$ancestors = get_post_ancestors($post->ID);
-            $parent  = end($ancestors);
-        } else {
-            $parent = $post->ID;
-        }
-        $post_data = get_post($parent, ARRAY_A);
-        $classes[] = 'section-' . $post_data['post_name'];
-    }
+	if (is_page()) {
+		if ($post->post_parent) {
+			$ancestors = get_post_ancestors($post->ID);
+			$parent  = end($ancestors);
+		} else {
+			$parent = $post->ID;
+		}
+		$post_data = get_post($parent, ARRAY_A);
+		$classes[] = 'section-' . $post_data['post_name'];
+	}
 
 	// post/page name/slug
 	if (is_page() || is_single()) {
