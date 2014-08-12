@@ -46,6 +46,8 @@ class cftp_sidebars {
 
 		));
 
+		if ( empty($sidebars) ) return;
+
 		foreach ($sidebars as $key => $sidebar) {
 
 			$heading = (isset($sidebar['heading']) ? $sidebar['heading'] : 'h4');
