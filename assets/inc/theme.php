@@ -78,7 +78,7 @@ function cftp_remove_recent_comments_style() {
 
 /**
  * cftp_dequeue_jquery_migrate
- * 
+ *
  * @param  object $scripts
  * @return void
  */
@@ -299,6 +299,25 @@ if (!function_exists('cftp_get_time')) {
 		}
 	}
 }
+
+/**
+ * cftp_responsive_tables
+ *
+ * Wrap all tables in a responsive div (bootstrap)
+ *
+ * @author Scott Evans
+ * @param  string $content
+ * @return string $content
+ */
+function cftp_responsive_tables( $content ) {
+
+	// regex tables and wrap in responsive div
+	$content = preg_replace("/<table[^>]*>(.*)<\/table>/uiUsm", '<div class="table-responsive"><table>$1</table></div>', $content);
+
+	// return content
+	return $content;
+}
+add_filter( 'the_content', 'cftp_responsive_tables', 20 );
 
 /**
  * cftp_oembed_wmode
