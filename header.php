@@ -27,7 +27,7 @@
 
 	<?php tha_body_top(); ?>
 
-	<div id="accessibility">
+	<div id="accessibility" aria-label="<?php _e('Page skip links', 'bootiful'); ?>">
 		<a href="#content" class="skip-link skip-content" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
 	</div><!-- #accessibility -->
 
