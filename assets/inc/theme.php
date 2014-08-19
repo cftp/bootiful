@@ -311,8 +311,9 @@ if (!function_exists('cftp_get_time')) {
  */
 function cftp_responsive_tables( $content ) {
 
-	// regex tables and wrap in responsive div
-	$content = preg_replace("/<table[^>]*>(.*)<\/table>/uiUsm", '<div class="table-responsive"><table>$1</table></div>', $content);
+	// wrap tables
+	$content = str_replace("<table", '<div class="table-responsive"><table', $content);
+	$content = str_replace("</table>", '</table></div>', $content);
 
 	// return content
 	return $content;
