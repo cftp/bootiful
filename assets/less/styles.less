@@ -34,6 +34,23 @@ contents:
 /* 2. Layout
 --------------------------------------------------------------------------------------- */
 
+// accessible skip
+
+.skip-content
+	{
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+	padding: @line-height-computed;
+	background: white;
+
+	&:focus
+		{
+		top: 0;
+		left: 0;
+		}
+	}
+
 body
 	{
 	//background: @white url(http://griddle.it/@{screen-lg}-@{grid-columns}-@{grid-gutter-width}) repeat-y center top;

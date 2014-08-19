@@ -27,8 +27,8 @@
 
 	<?php tha_body_top(); ?>
 
-	<div id="accessibility" class="sr-only">
-		<a href="#content" class="skip-link" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
+	<div id="accessibility">
+		<a href="#content" class="skip-link skip-content" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
 	</div><!-- #accessibility -->
 
 	<div id="wrapper" class="hfeed">
