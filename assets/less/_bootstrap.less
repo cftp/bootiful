@@ -4,6 +4,7 @@ _bootstrap.less
 contents:
 
 	1. Overwrite bootstrap styles
+	2. Responsive tables
 
 */
 
@@ -44,4 +45,82 @@ p
 blockquote p
 	{
 	//line-height: @line-height-computed*2;
+	}
+
+/* 2. Responsive Tables (add a class of .responsive to your table)
+--------------------------------------------------------------------------------------- */
+
+@media only screen and (max-width: 767px)
+	{
+
+	table.responsive
+		{
+		margin-bottom: 0;
+		border: none;
+		}
+
+	.pinned
+		{
+		//.drop-shadow(0, 2px, 5px, 0.5);
+		background: white;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 35%;
+		overflow: hidden;
+		overflow-x: scroll;
+		-webkit-overflow-scrolling: touch;
+		}
+
+	.pinned table
+		{
+		border: none;
+		//border-left: none;
+		width: 100%;
+		}
+
+	.pinned table th, .pinned table td
+		{
+		white-space: nowrap;
+		}
+
+	.pinned td:last-child
+		{
+		border-bottom: 0;
+		}
+
+	div.table-wrapper
+		{
+		border: 1px solid #141414;
+		position: relative;
+		margin-bottom: @line-height-computed;
+		overflow: hidden;
+		}
+
+	div.table-wrapper div.scrollable table
+		{
+		margin-left: 35%;
+		}
+
+	div.table-wrapper div.scrollable
+		{
+		overflow: scroll;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+		}
+
+	table.responsive td, table.responsive th
+		{
+		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
+		}
+
+	table.responsive th:first-child,
+	table.responsive td:first-child,
+	table.responsive td:first-child,
+	table.responsive.pinned td
+		{
+		display: none;
+		}
 	}
