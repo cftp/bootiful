@@ -20,10 +20,13 @@
 
 Notes:
 ----------------------------------------
-tweak customiser - https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
-				 - https://github.com/philipnewcomer/Customizer-Framework
-				 - strip google fonts stuff - should be its own control away from here
+
+still need to create a cleaner way of working with the customiser:
+	- https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
+	- https://github.com/philipnewcomer/Customizer-Framework
+	- strip google fonts stuff - should be its own control away from here
 add vcard spec data - http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#vcard
+create new colour control - http://pluto.kiwi.nz/2014/07/how-to-add-a-color-control-with-alphaopacity-to-the-wordpress-theme-customizer/
 */
 
 // set content width
@@ -43,7 +46,7 @@ function cftp_theme_setup() {
 	load_theme_textdomain( 'bootiful', get_template_directory() . '/assets/languages' );
 
 	// add support for custom backgrounds
-	add_theme_support( 'custom-background' );
+	// add_theme_support( 'custom-background' );
 
 	// add support for custom header http://codex.wordpress.org/Function_Reference/add_theme_support#Custom_Header
 	// add_theme_support( 'custom-header' );
