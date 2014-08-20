@@ -3,6 +3,19 @@ jQuery(document).ready(function() {
 	// we have js
 	jQuery('html').removeClass('no-js').addClass('js');
 
+	// responsive sidebar
+	jQuery('.sidebar-toggle').on('click', function(e) {
+
+		e.preventDefault();
+		jQuery('#wrapper').toggleClass('navigation-open');
+
+	});
+
+	// on the homepage open the sidebar by default
+	if (jQuery('body').hasClass('home')) {
+		jQuery('#wrapper').addClass('navigation-open');
+	}
+
 	// bind a click event to the 'skip' link
 	jQuery(".skip-content").click(function(event){
 

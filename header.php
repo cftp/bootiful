@@ -31,54 +31,58 @@
 		<a href="#content" class="skip-link skip-content" title="<?php _e('Skip to content &raquo;', 'bootiful'); ?>"><?php _e('Skip to content &raquo;', 'bootiful'); ?></a>
 	</div><!-- #accessibility -->
 
+	<div id="header-wrapper">
+
+		<?php tha_header_before(); ?>
+
+		<header id="header" role="banner">
+
+			<?php tha_header_top(); ?>
+
+			<a href="#" class="sidebar-toggle">#</a>
+
+			<div id="site-info" itemscope itemtype="http://schema.org/Organization">
+				<a id="site-title" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo('name') ); ?>" rel="home" class="logo" itemprop="url"><span itemprop="name"><?php bloginfo('name'); ?></span></a>
+				<span id="site-description" itemprop="description"><?php bloginfo('description') ?></span>
+			</div>
+
+			<?php if ( has_nav_menu( 'navigation' ) ) { ?>
+			<nav id="navigation" role="navigation">
+
+				<?php
+				wp_nav_menu(
+					array(
+						'menu' => 'navigation',
+						'theme_location' 	=> 'navigation',
+						'depth' 			=> 2,
+						'container_class'   => 'menu-navigation'
+						// example menu with bootstrap walker
+						//'container'         => 'div',
+						//'container_class'   => 'collapse navbar-collapse',
+						//'container_id'      => 'bs-example-navbar-collapse-1',
+						//'menu_class'        => 'nav navbar-nav',
+						//'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+						//'walker'            => new wp_bootstrap_navwalker())
+					)
+				);
+				?>
+
+			</nav><!--  #navigation -->
+			<?php } ?>
+
+			<?php tha_header_bottom(); ?>
+
+		</header><!-- #header -->
+
+		<?php tha_header_after(); ?>
+
+	</div><!-- #header-wrapper -->
+
 	<div id="wrapper" class="hfeed">
 
-		<div id="header-wrapper">
-
-			<?php tha_header_before(); ?>
-
-			<header id="header" role="banner">
-
-				<?php tha_header_top(); ?>
-
-				<div id="site-info" itemscope itemtype="http://schema.org/Organization">
-					<a id="site-title" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo('name') ); ?>" rel="home" class="logo" itemprop="url"><span itemprop="name"><?php bloginfo('name'); ?></span></a>
-					<span id="site-description" itemprop="description"><?php bloginfo('description') ?></span>
-				</div>
-
-				<?php if ( has_nav_menu( 'navigation' ) ) { ?>
-				<nav id="navigation" role="navigation">
-
-					<?php
-					wp_nav_menu(
-						array(
-							'menu' => 'navigation',
-							'theme_location' 	=> 'navigation',
-							'depth' 			=> 2,
-							'container_class'   => 'menu-navigation'
-							// example menu with bootstrap walker
-							//'container'         => 'div',
-							//'container_class'   => 'collapse navbar-collapse',
-							//'container_id'      => 'bs-example-navbar-collapse-1',
-							//'menu_class'        => 'nav navbar-nav',
-							//'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-							//'walker'            => new wp_bootstrap_navwalker())
-						)
-					);
-					?>
-
-				</nav><!--  #navigation -->
-				<?php } ?>
-
-				<?php tha_header_bottom(); ?>
-
-			</header><!-- #header -->
-
-			<?php tha_header_after(); ?>
-
-		</div><!-- #header-wrapper -->
-
 		<div id="content-wrapper">
+
+			<?php get_sidebar(); ?>
 
 			<?php tha_content_before(); ?>
 

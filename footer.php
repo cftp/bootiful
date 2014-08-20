@@ -14,22 +14,7 @@
 
 				<?php tha_footer_top(); ?>
 
-				<?php if ( has_nav_menu( 'footer' ) ) { ?>
-				<nav id="footer-navigation" role="navigation">
-
-					<?php
-					wp_nav_menu(
-						array(
-							'menu' => 'footer',
-							'theme_location' => 'footer',
-							'depth' => 1,
-							'container' => false
-						)
-					);
-					?>
-
-				</nav><!--  #footer-navigation -->
-				<?php } ?>
+				<?php // no footer on an infinite scroll site ?>
 
 				<?php tha_footer_bottom(); ?>
 

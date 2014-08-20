@@ -65,6 +65,60 @@ class cftp_customiser {
 		$wp_customize->get_setting( 'background_color' )->transport = 'refresh';
 
 		// colours
+		// background colour
+		$wp_customize->add_setting( 'bodybg',
+			array(
+				'default' => '#fff'
+			)
+		);
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'bodybg',
+			array(
+				'label' => __( 'Background Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'bodybg',
+				'priority' => 9
+			)
+		) );
+
+		// header
+		$wp_customize->add_setting( 'header',
+			array(
+				'default' => '#000'
+			)
+		);
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'header',
+			array(
+				'label' => __( 'Header Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'header',
+				'priority' => 10
+			)
+		) );
+
+		// sidebar
+		$wp_customize->add_setting( 'sidebar',
+			array(
+				'default' => '#f0f0f0'
+			)
+		);
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'sidebar',
+			array(
+				'label' => __( 'Sidebar Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'sidebar',
+				'priority' => 11
+			)
+		) );
+
 		// primary colour
 		$wp_customize->add_setting( 'brandprimary',
 			array(
@@ -363,7 +417,9 @@ class cftp_customiser {
 
 		global $content_width;
 
-		$vars['bodybg'] = '#'.get_theme_mod( 'background_color', 'ffffff'); // slightly different as based on core WP
+		$vars['bodybg'] = get_theme_mod( 'bodybg', '#ffffff');
+		$vars['header'] = get_theme_mod( 'header', '#000000');
+		$vars['sidebar'] = get_theme_mod( 'sidebar', '#f0f0f0');
 		$vars['brandprimary'] = get_theme_mod( 'brandprimary', '#ff0000');
 		$vars['brandsecondary'] = get_theme_mod( 'brandsecondary', '#bcbcbc');
 		$vars['textcol'] = get_theme_mod( 'textcol', '#bcbcbc');
@@ -388,7 +444,7 @@ class cftp_customiser {
 			$vars['logoheight'] = $logosize['height'];
 		} else {
 			$vars['logowidth'] = 0;
-			$vars['logoheight'] = 0;
+			$vars['logoheight'] = 30; // default height for logo text (no logo set)
 		}
 
 		return $vars;

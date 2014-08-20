@@ -20,6 +20,7 @@
 
 Notes:
 ----------------------------------------
+modernizer for touch detection and different styles
 
 */
 
@@ -176,11 +177,14 @@ function cftp_theme_css_setup() {
 	// print style sheet (including admin bar hide removed above)
 	// wp_enqueue_style('cftp-print');
 
+	// tidy up widgets in tabs (use our own css)
+	wp_dequeue_style( 'wit' );
+
 	// ie styles
 	wp_enqueue_style( 'cftp-ie' );
 
 }
-add_action( 'wp_enqueue_scripts', 'cftp_theme_css_setup' );
+add_action( 'wp_enqueue_scripts', 'cftp_theme_css_setup', 50 );
 
 /**
  * cftp_admin_js_setup

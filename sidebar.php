@@ -2,15 +2,21 @@
 
 <aside id="sidebar" class="sidebar" role="complementary">
 
-	<?php tha_sidebar_top(); ?>
+	<div id="sidebar-scroll-wrapper">
 
-	<?php
-	if ( is_active_sidebar( 'sidebar' ) ) {
-		dynamic_sidebar('sidebar');
-	}
-	?>
+		<div id="sidebar-scroll">
+			<?php tha_sidebar_top(); ?>
 
-	<?php tha_sidebar_bottom(); ?>
+			<?php
+			if ( is_active_sidebar( 'sidebar' ) ) {
+				dynamic_sidebar('sidebar');
+			}
+			?>
+
+			<?php tha_sidebar_bottom(); ?>
+		</div>
+
+	</div>
 
 </aside>
 

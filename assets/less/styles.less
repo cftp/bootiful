@@ -51,14 +51,61 @@ contents:
 		}
 	}
 
+html,
 body
 	{
-	//background: @white url(http://griddle.it/@{screen-lg}-@{grid-columns}-@{grid-gutter-width}) repeat-y center top;
+	background-color: @bodybg;
+	min-height: 100%;
+	}
+
+body
+	{
+	overflow-x: hidden;
+	}
+
+// ensure admin bar is fixed to avoid issues
+#wpadminbar
+	{
+	@media screen and (max-width: 600px)
+		{
+		position: fixed;
+		}
+	}
+
+#header-wrapper
+	{
+	background: @header;
+	position: fixed;
+	width: 100%;
+	z-index: 499 !important; // just under admin bar
+
+	#header
+		{
+		padding: 15px;
+		position: relative;
+		}
 	}
 
 #wrapper
 	{
-	background: url('http://www.baselineme.com/@{line-height-computed}') center top repeat;
+	.transition(all 0.4s ease);
+	position: relative;
+	left: 0;
+
+	&.navigation-open
+		{
+		left: 320px;
+
+		#sidebar
+			{
+			left: 0;
+			}
+
+		@media (min-width: @screen-md)
+			{
+			left: 0;
+			}
+		}
 	}
 
 .bootiful-wrapper
@@ -67,87 +114,205 @@ body
 	max-width: @screen-lg;
 	}
 
-#header-wrapper
+.sidebar-toggle
 	{
-	background: fadeout(@brand-primary, 90%);
-	margin-bottom: @line-height-computed;
+	display: inline;
+	background: red;
+	position: absolute;
+	left: 0;
+	top: 0;
 
-	#header
+	@media (min-width: @screen-md)
 		{
-		.bootiful-wrapper();
-		text-align: center;
-
-		.menu-navigation
-			{
-			.make-row();
-			background: fadeout(@brand-secondary, 50%);
-
-			.menu
-				{
-				.make-xs-column(12);
-				margin-bottom: 0;
-				}
-			}
+		display: none;
 		}
 	}
 
 #site-title
 	{
-	padding-top: @line-height-computed * 2;
-	font-size: @font-size-base + 20px;
+	font-size: @logoheight * 1px;
+	line-height: 1;
 	font-weight: bold;
 	display: block;
 	}
 
 #site-description
 	{
-	display: block;
-	padding-bottom: @line-height-computed * 2;
+	.sr-only;
 	}
 
 #content-wrapper
 	{
-	.bootiful-wrapper();
+	.transition(all 0.4s ease);
+	padding-top: @logoheight + 30px; // calculated height
 
-
-	#content
+	// only when we have width for the sidebar to be visible
+	@media (min-width: @screen-md)
 		{
-		.make-row();
+		padding-left: 320px;
+		}
+	}
+
+#sidebar
+	{
+	.transition(all 0.4s ease);
+	position: fixed;
+	top: @logoheight + 30px; // calculated height;
+	left: -320px;
+	background: @sidebar;
+	height: 100%;
+	width: 320px;
+	overflow-z: hidden;
+
+	@media (min-width: @screen-md)
+		{
+		left: 0;
 		}
 
-	#content-container
+	#sidebar-scroll-wrapper
 		{
-		.make-xs-column(8);
+		overflow: hidden;
+		height: 100%;
+		position: relative;
 		}
 
-	#sidebar
+	#sidebar-scroll
 		{
-		.make-xs-column(4);
+		overflow: scroll;
+		height: 100%;
+		padding-bottom: @logoheight + 30px; // bit of a hack to get scroll bar working early - investigate
+		margin-right: -16px; // on non touch devices
+		}
+	}
+
+.admin-bar #sidebar
+	{
+	top: @logoheight + 30px + 32px; // calculated height;
+
+	@media (max-width: 782px)
+		{
+		top: @logoheight + 30px + 46px; // calculated height;
+		}
+
+	#sidebar-scroll
+		{
+		padding-bottom: @logoheight + 30px + 32px; // bit of a hack to get scroll bar working early - investigate
+
+		@media (max-width: 782px)
+			{
+			padding-bottom: @logoheight + 30px + 46px; // calculated height;
+			}
+		}
+	}
+
+#content
+	{
+	background: red;
+	padding: 15px;
+	max-width: 970px;
+
+	@media (min-width: @screen-md)
+		{
+		margin: 50px auto;
+		min-width: 640px;
 		}
 	}
 
 #footer-wrapper
 	{
-	background: fadeout(@brand-secondary, 90%);
-	margin-top: @line-height-computed;
-	padding: @line-height-computed *2 0;
 
 	#footer
 		{
-		.bootiful-wrapper();
 		}
 	}
 
 .widget
 	{
-	.panel();
-	.panel-default();
 
+	.wit-tab-title,
 	.widgettitle
 		{
-		.panel-heading();
-		.panel-title();
-		padding: @line-height-computed/2;
+		padding: 10px;
+		}
+	}
+
+// widgets in tabs
+
+.widget_widgets_in_tabs .wit-nav
+	{
+	border-bottom: 1px solid #999;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	}
+
+.no-js .widget_widgets_in_tabs .wit-nav
+	{
+	display: none;
+	}
+
+.widget_widgets_in_tabs .wit-nav:before,
+.widget_widgets_in_tabs .wit-nav:after
+	{
+	content: " ";
+	display: table;
+	}
+
+.widget_widgets_in_tabs .wit-nav:after
+	{
+	clear: both;
+	}
+
+.widget_widgets_in_tabs .wit-nav li
+	{
+	float: left;
+	display: block;
+	margin-right: 1px;
+	}
+
+.widget_widgets_in_tabs .wit-nav li a
+	{
+	padding: 5px 10px;
+	display: block;
+	text-decoration: none;
+	}
+
+.widget_widgets_in_tabs .wit-nav .ui-tabs-active a,
+.widget_widgets_in_tabs .wit-nav .ui-tabs-active a:hover
+	{
+	background: #999;
+	color: #ffffff;
+	}
+
+.widget_widgets_in_tabs .ui-tabs-nav a:hover
+	{
+	background-color: #999;
+	color: #ffffff;
+	}
+
+.widget_widgets_in_tabs .ui-tabs-hide
+	{
+	display: none !important;
+	}
+
+// home
+
+.home
+	{
+
+	// hide main articles on small screens
+	@media (max-width: 320px)
+		{
+
+		.sidebar-toggle
+			{
+			display: none;
+			}
+
+		#content
+			{
+			display: none;
+			}
 		}
 	}
 
