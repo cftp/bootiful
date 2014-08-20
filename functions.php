@@ -21,14 +21,6 @@
 Notes:
 ----------------------------------------
 
-still need to create a cleaner way of working with the customiser:
-	- https://github.com/bueltge/Documentation/blob/master/inc/theme-customize.php
-	- https://github.com/philipnewcomer/Customizer-Framework
-	- strip google fonts stuff - should be its own control away from here
-	- https://github.com/devinsays/customizer-library
-	- http://kirki.org/
-add vcard spec data - http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html#vcard
-create new colour control - http://pluto.kiwi.nz/2014/07/how-to-add-a-color-control-with-alphaopacity-to-the-wordpress-theme-customizer/
 */
 
 // set content width
