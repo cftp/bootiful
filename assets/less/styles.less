@@ -129,8 +129,13 @@ body
 	display: inline;
 	background: red;
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 15px;
+	top: 15px;
+	width: @logoheight * 1px;
+	height: @logoheight * 1px;
+	font-size: @logoheight * 1px;
+	line-height: 1;
+	text-align: center;
 
 	@media (min-width: @screen-md)
 		{
@@ -140,10 +145,46 @@ body
 
 #site-title
 	{
+	.img-retina('@{logo}?v=@{cachebust}', '@{logoretina}?v=@{cachebust}', @logowidth*1px, @logoheight*1px);
+	width: @logowidth*1px;
+	height: @logoheight*1px;
 	font-size: @logoheight * 1px;
 	line-height: 1;
 	font-weight: bold;
 	display: block;
+	margin-left: @logoheight + 15px;
+
+	@media (min-width: @screen-md)
+		{
+		margin-left: 0;
+		}
+
+	// option for large logo and mobile logo
+	/*@media (min-width: @screen-lg)
+		{
+		background-image: url('@{templateuri}/assets/images/eurosport-logo.png?v=@{cachebust}');
+		height: 80px;
+		width: 131px;
+		top: 13px;
+		margin-left: -66px;
+		}
+
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: @screen-lg),
+	only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: @screen-lg),
+	only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: @screen-lg),
+	only screen and (        min-device-pixel-ratio: 2)      and (min-width: @screen-lg),
+	only screen and (                min-resolution: 192dpi) and (min-width: @screen-lg),
+	only screen and (                min-resolution: 2dppx)  and (min-width: @screen-lg)
+		{
+		background-image: url('@{templateuri}/assets/images/eurosport-logo@2x.png?v=@{cachebust}');
+		background-size: 131px 80px;
+		}*/
+
+	span
+		{
+		.sr-only();
+		}
 	}
 
 #site-description
@@ -220,6 +261,8 @@ body
 		}
 	}
 
+// content
+
 #content
 	{
 	padding: 15px;
@@ -243,18 +286,25 @@ body
 		}
 	}
 
+// articles
+
 article.type-post
 	{
 	background-color: @article;
-	}
+	margin-bottom: 30px;
 
-#footer-wrapper
-	{
-
-	#footer
+	@media (min-width: @screen-md)
 		{
+		margin-bottom: 30px*2;
+		}
+
+	@media (min-width: @screen-lg)
+		{
+		margin-bottom: 30px*3;
 		}
 	}
+
+// widgets
 
 .widget
 	{
@@ -372,6 +422,11 @@ article.type-post
 			display: none;
 			}
 
+		#site-title
+			{
+			margin-left: 0;
+			}
+
 		#content
 			{
 			display: none;
@@ -455,6 +510,24 @@ article.type-post
 		{
 		.btn();
 		.btn-primary();
+		}
+	}
+
+// infinite scroll
+
+#infscr-loading
+	{
+	text-align: center;
+	margin-bottom: 10px;
+
+	@media (min-width: @screen-md)
+		{
+		margin-bottom: 20px;
+		}
+
+	@media (min-width: @screen-lg)
+		{
+		margin-bottom: 30px;
 		}
 	}
 
