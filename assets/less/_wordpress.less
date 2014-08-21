@@ -15,7 +15,6 @@ contents:
 
 .entry-content img
 	{
-	.img-responsive();
 	margin-bottom: @padding-large-vertical;
 	}
 
@@ -91,13 +90,18 @@ blockquote.right
 	width: 33%;
 	}
 
+.js .pagination
+	{
+	.sr-only();
+	}
+
 // responsive
 
 .entry-content img,
 .comment-content img,
 .widget img
 	{
-    //max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
+	.img-responsive();
 	}
 
 img[class*="align"],

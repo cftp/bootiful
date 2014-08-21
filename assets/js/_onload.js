@@ -1,8 +1,5 @@
 jQuery(document).ready(function() {
 
-	// we have js
-	jQuery('html').removeClass('no-js').addClass('js');
-
 	// responsive sidebar
 	jQuery('.sidebar-toggle').on('click', function(e) {
 

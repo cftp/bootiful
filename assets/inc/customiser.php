@@ -79,7 +79,7 @@ class cftp_customiser {
 				'label' => __( 'Background Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'bodybg',
-				'priority' => 9
+				'priority' => 8
 			)
 		) );
 
@@ -97,7 +97,7 @@ class cftp_customiser {
 				'label' => __( 'Header Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'header',
-				'priority' => 10
+				'priority' => 9
 			)
 		) );
 
@@ -115,10 +115,45 @@ class cftp_customiser {
 				'label' => __( 'Sidebar Colour', 'bootiful' ),
 				'section' => 'colors',
 				'settings' => 'sidebar',
+				'priority' => 10
+			)
+		) );
+
+		// content
+		$wp_customize->add_setting( 'content',
+			array(
+				'default' => '#fff'
+			)
+		);
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'content',
+			array(
+				'label' => __( 'Content Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'content',
 				'priority' => 11
 			)
 		) );
 
+		// article
+		$wp_customize->add_setting( 'article',
+			array(
+				'default' => '#fff'
+			)
+		);
+
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize,
+			'article',
+			array(
+				'label' => __( 'Article Colour', 'bootiful' ),
+				'section' => 'colors',
+				'settings' => 'article',
+				'priority' => 12
+			)
+		) );
 		// primary colour
 		$wp_customize->add_setting( 'brandprimary',
 			array(
@@ -420,6 +455,8 @@ class cftp_customiser {
 		$vars['bodybg'] = get_theme_mod( 'bodybg', '#ffffff');
 		$vars['header'] = get_theme_mod( 'header', '#000000');
 		$vars['sidebar'] = get_theme_mod( 'sidebar', '#f0f0f0');
+		$vars['content'] = get_theme_mod( 'content', '#ffffff');
+		$vars['article'] = get_theme_mod( 'article', '#ffffff');
 		$vars['brandprimary'] = get_theme_mod( 'brandprimary', '#ff0000');
 		$vars['brandsecondary'] = get_theme_mod( 'brandsecondary', '#bcbcbc');
 		$vars['textcol'] = get_theme_mod( 'textcol', '#bcbcbc');
