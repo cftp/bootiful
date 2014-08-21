@@ -109,31 +109,6 @@ class cftp_mce_editor {
 		$style_uri = get_stylesheet_directory_uri();
 		$style_dir = get_stylesheet_directory();
 
-		// get google fonts
-		$heading_font = get_theme_mod( 'headingfont', 'Cabin' );
-		$heading_font_weight = get_theme_mod( 'headingfontweight', '700' );
-		$body_font = get_theme_mod( 'bodyfont', 'a1' );
-
-		global $cftp_customiser;
-		$allfonts = $cftp_customiser->get_fonts();
-
-		$gfonts = array();
-
-		if ( ! $cftp_customiser->string_search('(system)', $allfonts[$heading_font]['name'] ) ) {
-			$gfonts[] = $heading_font . ':' . $heading_font_weight;
-		}
-
-		if ( ! $cftp_customiser->string_search('(system)', $allfonts[$body_font]['name'] ) ) {
-			$gfonts[] = $body_font;
-		}
-
-		if ( ! empty( $gfonts ) ) {
-			$gfonts = array_unique($gfonts);
-			$getfonts = implode('|', $gfonts);
-			$protocol = is_ssl() ? 'https' : 'http';
-			$mce_css[] = add_query_arg('ver', CFTP_CACHE_BUST, $protocol . '://fonts.googleapis.com/css?family='.$getfonts);
-		}
-
 		// cache bust
 		foreach ( $mce_css as & $css ) {
 			if ( false === strpos( $css, 'ver=' ) ) {

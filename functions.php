@@ -20,12 +20,22 @@
 
 Notes:
 ----------------------------------------
-modernizer for touch detection and different styles
+template parts for all widgets - sensible name/location - add filters to plugins if needed
+
+TB
+Typography
+Widget for latest posts
+Menu and collapse to mobile
+
+GP
+Typography
+Widget for latest posts with infinite scroll
+Hidden menu on mobile
 
 */
 
 // set content width
-if ( ! isset( $content_width ) ) $content_width = apply_filters( 'cftp_content_width', 600 );
+if ( ! isset( $content_width ) ) $content_width = apply_filters( 'cftp_content_width', 640 );
 
 /**
  * cftp_theme_setup
@@ -76,6 +86,10 @@ function cftp_theme_setup() {
 
 	// image sizes
 	// add_image_size( 'custom-image-size', 630, 500, false );
+
+	// remove iconic header CSS
+	remove_action( 'wp_head', 'iconic_css' );
+
 
 }
 add_action( 'after_setup_theme','cftp_theme_setup' );
@@ -172,7 +186,7 @@ function cftp_theme_css_setup() {
 	wp_enqueue_style( 'cftp-theme' );
 
 	// remove admin bar css for print media - added already
-	//remove_action( 'wp_head', 'wp_admin_bar_header' );
+	remove_action( 'wp_head', 'wp_admin_bar_header' );
 
 	// print style sheet (including admin bar hide removed above)
 	// wp_enqueue_style('cftp-print');
@@ -210,18 +224,22 @@ add_action( 'admin_enqueue_scripts', 'cftp_admin_js_setup' );
 function cftp_theme_js_setup() {
 
 	// register all scripts
-	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'));
+	wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', null, filemtime(get_template_directory() . '/assets/js/modernizr.js'));
+	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery', 'modernizr'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'));
 
 	// comment threading
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
+	// modernizr
+	wp_enqueue_script( 'modernizr' );
+
 	// standard shipped jquery
-	wp_enqueue_script('jquery');
+	wp_enqueue_script( 'jquery' );
 
 	// theme js file
-	wp_enqueue_script('cftp-js');
+	wp_enqueue_script( 'cftp-js' );
 }
 add_action( 'wp_enqueue_scripts', 'cftp_theme_js_setup' );
 

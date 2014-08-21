@@ -1,56 +1,41 @@
 <?php tha_entry_before(); ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('media'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting" <?php post_attributes(); ?>>
+<article <?php post_class() ?> role="article" itemscope itemtype="http://schema.org/BlogPosting" <?php post_attributes(); ?>>
 
 	<?php tha_entry_top(); ?>
 
-	<?php if ( has_post_thumbnail() ) { ?>
-		<a href="<?php the_permalink(); ?>" rel="bookmark" class="pull-left">
-			<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object', 'itemprop'=>'image' ) ); ?>
-		</a>
-	<?php } ?>
+	<header class="page-header">
 
-	<div class="media-body">
+		<?php tha_entry_header_top(); ?>
 
-		<header class="entry-header">
+		<h1 class="entry-title" itemprop="headline"><?php the_title() ?></h1>
 
-			<?php tha_entry_header_top(); ?>
+		<?php tha_entry_header_bottom(); ?>
 
-			<h2 class="entry-title media-heading" itemprop="headline"><a href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php the_title(); ?></a></h2>
+	</header>
 
-			<?php if ( is_sticky() ) : ?>
-				<div class="entry-sticky"><?php _e( 'Featured', 'bootiful' ); ?></div>
-			<?php else : ?>
-				<div class="entry-date"><time class="published" datetime="<?php the_date('c'); ?>" itemprop="datePublished"><?php cftp_time(); ?></time></div>
-			<?php endif; ?>
+	<div class="entry-content" itemprop="articleBody">
+		<?php wp_link_pages('before=<div class="page-link">'  . __('Page:', 'bootiful') . '&after=</div>&link_before=<span>&link_after=</span>') ?>
+		<?php the_content() ?>
+	</div>
 
-			<?php tha_entry_header_bottom(); ?>
+	<footer>
 
-		</header><!-- .entry-header -->
+		<?php tha_entry_footer_top(); ?>
 
-		<div class="entry-summary" itemprop="description">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		<?php tha_entry_footer_bottom(); ?>
 
-		<footer>
+	</footer>
 
-			<?php tha_entry_footer_top(); ?>
-
-			<ul class="entry-meta">
-				<li class="author vcard entry-author"><?php _e('By:', 'bootiful'); ?> <a class="url" href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>" title="<?php the_author_meta('display_name'); ?>"><span class="fn n" rel="author" itemprop="author"><?php the_author_meta('display_name'); ?></span></a></li>
-				<li class="entry-categories"><?php _e('Posted in:', 'bootiful'); ?> <?php the_category(', ') ?></li>
-				<?php the_tags('<li class="entry-tags">'.__('Tagged:', 'bootiful').' ', ', ', '</li>'); ?>
-				<?php if ( comments_open() && ! post_password_required() ) : ?><li class="entry-comments"><?php comments_popup_link(__('No Comments', 'bootiful'), __('1 Comment', 'bootiful'), __('% Comments', 'bootiful')); ?></li><?php endif; ?>
-			</ul>
-
-			<?php tha_entry_footer_bottom(); ?>
-
-		</footer><!-- .entry-meta -->
-
-	</div><!-- .media-body -->
+	<?php
+	// if comments are open or we have at least one comment, load up the comment template
+	if (comments_open() || '0' != get_comments_number()) {
+		comments_template();
+	}
+	?>
 
 	<?php tha_entry_bottom(); ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>
 
 <?php tha_entry_after(); ?>

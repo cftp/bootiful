@@ -11,9 +11,11 @@ jQuery(document).ready(function() {
 
 	});
 
-	// on the homepage open the sidebar by default
-	if (jQuery('body').hasClass('home')) {
-		jQuery('#wrapper').addClass('navigation-open');
+	// on the homepage open the sidebar by default on small screens
+	if (Modernizr.mq('only screen and (max-width: 320px)')) {
+		if (jQuery('body').hasClass('home')) {
+			jQuery('#wrapper').addClass('navigation-open');
+		}
 	}
 
 	// bind a click event to the 'skip' link

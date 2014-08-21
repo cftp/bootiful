@@ -181,8 +181,13 @@ body
 		overflow: scroll;
 		height: 100%;
 		padding-bottom: @logoheight + 30px; // bit of a hack to get scroll bar working early - investigate
-		margin-right: -16px; // on non touch devices
+  		-webkit-overflow-scrolling: touch;
 		}
+	}
+
+.no-touch #sidebar #sidebar-scroll
+	{
+	margin-right: -15px; // on non touch devices hide scroll bar (width of scroll bar)
 	}
 
 .admin-bar #sidebar
@@ -240,67 +245,100 @@ body
 
 .widget_widgets_in_tabs .wit-nav
 	{
-	border-bottom: 1px solid #999;
 	width: 100%;
-	margin: 0;
-	padding: 0;
-	}
-
-.no-js .widget_widgets_in_tabs .wit-nav
-	{
-	display: none;
-	}
-
-.widget_widgets_in_tabs .wit-nav:before,
-.widget_widgets_in_tabs .wit-nav:after
-	{
-	content: " ";
+	background: @sidebar;
 	display: table;
-	}
+	border-collapse: collapse;
+	border: none;
+	padding: 0;
+	margin: 0;
 
-.widget_widgets_in_tabs .wit-nav:after
-	{
-	clear: both;
-	}
+	li
+		{
+		display: table-cell;
+		text-align: center;
 
-.widget_widgets_in_tabs .wit-nav li
-	{
-	float: left;
-	display: block;
-	margin-right: 1px;
-	}
+		.tab-title
+			{
+			//.sr-only();
+			}
 
-.widget_widgets_in_tabs .wit-nav li a
-	{
-	padding: 5px 10px;
-	display: block;
-	text-decoration: none;
-	}
+		.tab-icon
+			{
+			.icon-mixin();
+			font-size: @font-size-base + 4px;
+			position: relative;
+			top: 3px;
 
-.widget_widgets_in_tabs .wit-nav .ui-tabs-active a,
-.widget_widgets_in_tabs .wit-nav .ui-tabs-active a:hover
-	{
-	background: #999;
-	color: #ffffff;
-	}
+			&:before
+				{
+				content: "\e606";
+				}
 
-.widget_widgets_in_tabs .ui-tabs-nav a:hover
-	{
-	background-color: #999;
-	color: #ffffff;
-	}
+			&.tab-icon-nav_menu:before,
+			&.tab-icon-horizontal_nav_menu:before,
+			&.tab-icon-pages:before
+				{
+				content: "\e607";
+				}
 
-.widget_widgets_in_tabs .ui-tabs-hide
-	{
-	display: none !important;
+			&.tab-icon-wpasw-widget:before,
+			&.tab-icon-search:before
+				{
+				content: "\e603";
+				}
+
+			&.tab-icon-recent-posts:before
+				{
+				content: "\e602";
+				}
+
+			&.tab-icon-recent-comments:before
+				{
+				content: "\e60c";
+				}
+
+			&.tab-icon-rss:before
+				{
+				content: "\e604";
+				}
+
+			&.tab-icon-twitter-profile-tracker:before,
+			&.tab-icon-twitter-tracker:before
+				{
+				content: "\e60d";
+				}
+
+			&.tab-icon-tag_cloud:before,
+			&.tab-icon-categories:before
+				{
+				content: "\e60b";
+				}
+
+			&.tab-icon-null-popular-posts:before
+				{
+				content: "\e610";
+				}
+
+			&.tab-icon-text:before
+				{
+				content: "\e605";
+				}
+
+			&.tab-icon-archives:before
+				{
+				content: "\e608";
+				}
+			}
+		}
 	}
 
 // home
+// hide main articles on small screens with touch - force list view at this size
 
-.home
+.touch  .home
 	{
 
-	// hide main articles on small screens
 	@media (max-width: 320px)
 		{
 

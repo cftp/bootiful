@@ -10,10 +10,6 @@
 
 			<?php endwhile; ?>
 
-		<?php else : ?>
-
-			<?php get_template_part( 'parts/loop', 'none' ); ?>
-
 		<?php endif; ?>
 
 		<?php get_template_part( 'parts/paginate' ); ?>

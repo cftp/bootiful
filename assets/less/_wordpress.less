@@ -1,4 +1,4 @@
-/* 
+/*
 
 _wordpress.less
 contents:
@@ -6,73 +6,74 @@ contents:
 	1. WordPress
 	2. oEmbed
 	3. Shortcodes
-	
+
 */
 
 
 /* 1. WordPress (http://codex.wordpress.org/CSS#WordPress_Generated_Classes)
 --------------------------------------------------------------------------------------- */
 
-.entry-content img 
+.entry-content img
 	{
-	margin-bottom: @padding-large-vertical;	
+	.img-responsive();
+	margin-bottom: @padding-large-vertical;
 	}
 
 .alignleft,
-img.alignleft 
+img.alignleft
 	{
 	display: inline;
 	float: left;
 	margin-right: @padding-large-vertical;
 	}
-	
+
 .alignright,
-img.alignright 
+img.alignright
 	{
 	display: inline;
 	float: right;
   	margin-left: @padding-large-vertical;
 	}
-	
+
 .aligncenter,
-img.aligncenter 
+img.aligncenter
 	{
 	clear: both;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	}
-	
-.wp-caption 
+
+.wp-caption
 	{
 	font-size: @font-size-base - 2px;
 	color: @gray-dark;
 	}
-	
-.wp-caption img 
+
+.wp-caption img
 	{
 	border: 0 none;
 	margin: 0;
 	padding: 0;
 	}
-	
-.wp-smiley 
-	{ 
+
+.wp-smiley
+	{
 	max-height: 1em;
 	margin:0 !important;
 	}
-	
-.gallery dl 
+
+.gallery dl
 	{
 	margin: 0;
 	}
-	
-.gallery-caption 
+
+.gallery-caption
 	{
 	margin:-@padding-large-vertical 0 0 0;
 	}
 
-blockquote.left 
+blockquote.left
 	{
 	float: left;
 	margin-left: 0;
@@ -81,7 +82,7 @@ blockquote.left
 	width: 33%;
 	}
 
-blockquote.right 
+blockquote.right
 	{
 	float: right;
 	margin-left: 20px;
@@ -90,33 +91,33 @@ blockquote.right
 	width: 33%;
 	}
 
-// responsive 
+// responsive
 
 .entry-content img,
 .comment-content img,
-.widget img 
+.widget img
 	{
     //max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
 	}
 
 img[class*="align"],
-img[class*="wp-image-"] 
+img[class*="wp-image-"]
 	{
     height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 	}
 
-img.size-full 
+img.size-full
 	{
     //max-width: 97.5%;
     width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 	}
 
-.wp-caption 
-	{ 
+.wp-caption
+	{
 	max-width: 100%;
 	}
-	
-// admin bar settings 
+
+// admin bar settings
 
 .admin-bar.admin-bar-absolute #wpadminbar
 	{
@@ -126,7 +127,7 @@ img.size-full
 /* 2. oEmbed
 --------------------------------------------------------------------------------------- */
 
-.o-container 
+.o-container
 	{
 	margin-bottom: @padding-large-vertical;
 
@@ -144,10 +145,10 @@ img.size-full
 
 	&.soundcloud
 		{
-		position: relative;	    
+		position: relative;
 	    height: 165px;
 		overflow: hidden;
-		background-size: 100px 15px;		
+		background-size: 100px 15px;
 		}
 
 	&.twitter
