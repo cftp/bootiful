@@ -1,10 +1,33 @@
+// sidebar position vars
+var $sidebar, sidebarpos, sidebartop;
+
 jQuery(document).ready(function() {
+
+	// sidebar position
+	$sidebar = jQuery('#sidebar');
+	sidebarpos = $sidebar.position();
+ 	sidebartop = sidebarpos.top;
+
+	var originaloffset = false;
 
 	// responsive sidebar
 	jQuery('.sidebar-toggle').on('click', function(e) {
 
 		e.preventDefault();
 		jQuery('#wrapper').toggleClass('navigation-open');
+
+		// fixes for stuck share tools
+		//var $stuck = jQuery('article .stickOnScroll-on');
+		//var stuckoffset = $stuck.offset();
+
+		//if (! originaloffset) {
+		//	originaloffset = stuckoffset.left;
+		//}
+		//if (jQuery('#wrapper').hasClass('navigation-open')) {
+		//	$stuck.css('left', stuckoffset.left + 320 + 'px');
+		//} else {
+		//	$stuck.css('left', originaloffset + 'px');
+		//}
 
 	});
 
@@ -56,10 +79,10 @@ jQuery(document).ready(function() {
 
 	// sticky share tools - only when sidebar is out? - otherwise breaks stuff
 	// not overly happy with this
-	var $sidebar = jQuery('#sidebar');
-	var sidebarpos = $sidebar.position();
+	// when window resizes we could do with destroying them
+
 	jQuery("article .share-tools").first().stickOnScroll({
-		topOffset:          sidebarpos.top,
+		topOffset:          sidebartop,
 		setParentOnStick:   true,
 		setWidthOnStick:    true
 	});
@@ -68,10 +91,19 @@ jQuery(document).ready(function() {
 		var $sidebar = jQuery('#sidebar');
 		var sidebarpos = $sidebar.position();
 		jQuery(ev.newElements).find(".share-tools").first().stickOnScroll({
-			topOffset:          sidebarpos.top,
+			topOffset:          sidebartop,
 			setParentOnStick:   true,
 			setWidthOnStick:    true
 		});
 	});
+
+});
+
+// window resized
+jQuery(window).on("debouncedresize", function( event ) {
+
+	// update sidebar position
+	sidebarpos = $sidebar.position();
+	sidebartop = sidebarpos.top;
 
 });
