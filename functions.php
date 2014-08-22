@@ -30,6 +30,7 @@ Widget for latest posts
 Menu and collapse to mobile
 icon font
 custom share tools
+advert slot - might need to adjust responsiveness of main content
 
 GP
 Typography

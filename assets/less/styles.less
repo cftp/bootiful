@@ -240,16 +240,18 @@ body
 	#sidebar-scroll
 		{
 		position: relative;
-		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: hidden;
 		height: 100%;
 		padding-bottom: @logoheight + 30px; // bit of a hack to get scroll bar working early - investigate
   		-webkit-overflow-scrolling: touch;
 		}
 	}
 
+// this poses an issue on trackpad devices where scroll bars collapse. Disabled for now.
 .no-touch #sidebar #sidebar-scroll
 	{
-	margin-right: -15px; // on non touch devices hide scroll bar (width of scroll bar)
+	//margin-right: -15px; // on non touch devices hide scroll bar (width of scroll bar)
 	}
 
 .admin-bar #sidebar
