@@ -14,14 +14,18 @@
 
 	</header>
 
+	<?php get_template_part( 'parts/post', 'share' ); ?>
+
 	<div class="entry-content" itemprop="articleBody">
 		<?php wp_link_pages('before=<div class="page-link">'  . __('Page:', 'bootiful') . '&after=</div>&link_before=<span>&link_after=</span>') ?>
 		<?php the_content() ?>
 	</div>
 
-	<footer>
+	<footer class="entry-footer">
 
 		<?php tha_entry_footer_top(); ?>
+
+		<?php get_template_part( 'parts/post', 'share' ); ?>
 
 		<?php tha_entry_footer_bottom(); ?>
 

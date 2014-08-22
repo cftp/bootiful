@@ -224,11 +224,11 @@ body
 		{
 		overflow: hidden;
 		height: 100%;
-		position: relative;
 		}
 
 	#sidebar-scroll
 		{
+		position: relative;
 		overflow: scroll;
 		height: 100%;
 		padding-bottom: @logoheight + 30px; // bit of a hack to get scroll bar working early - investigate
@@ -292,6 +292,7 @@ article.type-post
 	{
 	background-color: @article;
 	margin-bottom: 30px;
+	position: relative;
 
 	@media (min-width: @screen-md)
 		{
@@ -301,6 +302,34 @@ article.type-post
 	@media (min-width: @screen-lg)
 		{
 		margin-bottom: 30px*3;
+		}
+
+	header
+		{
+		padding: 15px;
+
+		@media (min-width: @screen-md)
+			{
+			padding: 30px;
+			}
+		}
+
+	.share-tools
+		{
+		background: red;
+		.transition(all 0.4s ease);
+		z-index: 499;
+		}
+
+	.entry-content
+		{
+		padding: 15px;
+		max-width: 640px;
+
+		@media (min-width: @screen-md)
+			{
+			padding: 30px;
+			}
 		}
 	}
 

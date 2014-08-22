@@ -21,16 +21,23 @@
 Notes:
 ----------------------------------------
 template parts for all widgets - sensible name/location - add filters to plugins if needed
+sticky ness of certain elements
+co-authors
 
 TB
 Typography
 Widget for latest posts
 Menu and collapse to mobile
+icon font
+custom share tools
 
 GP
 Typography
 Widget for latest posts with infinite scroll
 Hidden menu on mobile
+additional logo for mobile - would involve changing ALL heights!
+icon font
+add this share tools
 
 */
 
@@ -225,12 +232,15 @@ function cftp_theme_js_setup() {
 
 	// register all scripts
 	wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', null, filemtime(get_template_directory() . '/assets/js/modernizr.js'));
-	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery', 'modernizr'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'));
+	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery', 'modernizr', 'jquery-ui-tabs'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'));
 
 	// comment threading
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	// tidy up widgets in tabs (use our own JS)
+	wp_dequeue_script( 'wit' );
 
 	// modernizr
 	wp_enqueue_script( 'modernizr' );
@@ -241,7 +251,7 @@ function cftp_theme_js_setup() {
 	// theme js file
 	wp_enqueue_script( 'cftp-js' );
 }
-add_action( 'wp_enqueue_scripts', 'cftp_theme_js_setup' );
+add_action( 'wp_enqueue_scripts', 'cftp_theme_js_setup', 50 );
 
 /**
  * cftp_conditional_ie_styles
