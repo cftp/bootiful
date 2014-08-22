@@ -145,9 +145,7 @@ body
 
 #site-title
 	{
-	.img-retina('@{logo}?v=@{cachebust}', '@{logoretina}?v=@{cachebust}', @logowidth*1px, @logoheight*1px);
-	width: @logowidth*1px;
-	height: @logoheight*1px;
+	.logo();
 	font-size: @logoheight * 1px;
 	line-height: 1;
 	font-weight: bold;
@@ -183,8 +181,21 @@ body
 
 	span
 		{
-		.sr-only();
+		.hide-logo-text();
+		display: block;
 		}
+	}
+
+.logo() when (@logowidth > 0)
+	{
+	.img-retina('@{logo}?v=@{cachebust}', '@{logoretina}?v=@{cachebust}', @logowidth*1px, @logoheight*1px);
+	width: @logowidth*1px;
+	height: @logoheight*1px;
+	}
+
+.hide-logo-text() when (@logowidth > 0)
+	{
+	.sr-only();
 	}
 
 #site-description
