@@ -134,6 +134,46 @@ function cftp_dequeue_jquery_migrate( $scripts ){
 }
 
 /**
+ * cftp_clean_head
+ *
+ * Remove unwanted links and tags in <head>
+ *
+ * @return void
+ */
+function cftp_clean_head() {
+
+	// RSD link
+	// remove_action('wp_head', 'rsd_link');
+
+	// remove windows live generator tag
+	remove_action('wp_head', 'wlwmanifest_link');
+
+	// remove generator tag
+	remove_action('wp_head', 'wp_generator');
+
+	// remove links to the extra feeds (e.g. category feeds)
+	// remove_action('wp_head', 'feed_links', 2);
+
+	// remove links to the general feeds (e.g. posts and comments)
+	remove_action('wp_head', 'feed_links_extra', 3);
+
+	// remove rel shortlink
+	remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+
+	// canoncical
+	// remove_action('wp_head', 'rel_canonical');
+
+	// yoast
+	global $wpseo_front;
+	remove_action( 'wpseo_head', array( $wpseo_front, 'debug_marker' ), 2 );
+
+	// stream
+	add_filter( 'wp_stream_frontend_indicator', '__return_false' );
+
+}
+add_action('init', 'cftp_clean_head');
+
+/**
  * cftp_body_class
  *
  * Filter the body class to be more meaningful
