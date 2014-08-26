@@ -332,6 +332,7 @@ function cftp_wp_head() {
 <meta name="application-name" content="<?php bloginfo('name'); ?>" />
 <meta name="msapplication-tooltip" content="<?php bloginfo('description'); ?>"/>
 <meta name="msapplication-starturl" content="<?php echo home_url(); ?>"/>
+<meta name="msapplication-notification" content="frequency=120;polling-uri=http://notifications.buildmypinnedsite.com/?feed=<?php echo esc_url( get_bloginfo('rss2_url') ); ?>&amp;id=1;cycle=1"/>
 <?php if ($touchicon = get_theme_mod('touchicon')) { ?><meta name="msapplication-TileImage" content="<?php echo $touchicon; ?>"><?php echo "\n"; } ?>
 <?php if ($ie9colour = get_theme_mod('primarycol')) { ?><meta name="msapplication-TileColor" content="<?php echo $ie9colour; ?>"><?php echo "\n"; } ?>
 <?php if ($ie9colour = get_theme_mod('ie9_colour')) { ?><meta name="msapplication-navbutton-color" content="<?php echo $ie9colour; ?>"><?php echo "\n"; }  ?>
