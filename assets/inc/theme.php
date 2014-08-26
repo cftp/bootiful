@@ -1,6 +1,37 @@
 <?php
 
 /**
+ * cftp_robots
+ *
+ * Add sitemap to robots.txt
+ */
+function cftp_robots() {
+
+	if (is_robots()) {
+
+		$output = "User-agent: *\n";
+		$output .= "Disallow: /wp-admin/\n";
+		$output .= "Disallow: /wp-includes/\n";
+
+		if ( file_exists($_SERVER['DOCUMENT_ROOT'].'/sitemap.xml.gz') )
+			$output .= 'Sitemap: http://'.$_SERVER['HTTP_HOST'].'/sitemap.xml.gz';
+		else if ( file_exists($_SERVER['DOCUMENT_ROOT'].'/sitemap.xml') )
+			$output .= 'Sitemap: http://'.$_SERVER['HTTP_HOST'].'/sitemap.xml';
+		elseif ( class_exists('WPSEO_Sitemaps'))
+			$output .= 'Sitemap: http://'.$_SERVER['HTTP_HOST'].'/sitemap_index.xml';
+
+		header('Status: 200 OK', true, 200);
+		header('Content-type: text/plain; charset='.get_bloginfo('charset'));
+		echo $output;
+		exit;
+	}
+}
+if (get_option('blog_public')) {
+	remove_action('do_robots', 'do_robots');
+	add_action('do_robots','cftp_robots');
+}
+
+/**
  * cftp_language_attributes
  *
  * Set the correct HTML attributes
