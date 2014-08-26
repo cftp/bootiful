@@ -21,7 +21,6 @@
 Notes:
 ----------------------------------------
 template parts for all widgets - sensible name/location - add filters to plugins if needed
-sticky ness of certain elements
 co-authors
 
 TB

@@ -63,6 +63,19 @@ function cftp_language_attributes() {
 add_filter('language_attributes', 'cftp_language_attributes');
 
 /**
+ * cftp_og_locale
+ *
+ * Set correct locale for open graph in WordPress SEO
+ *
+ * @param  string $locale
+ * @return string
+ */
+function cftp_og_locale($locale) {
+    return "en_GB";
+}
+add_filter('wpseo_locale', 'cftp_og_locale');
+
+/**
  * cftp_schema
  *
  * Add schema data to the html tag (http://schema.org/)
