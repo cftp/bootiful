@@ -218,6 +218,19 @@ function cftp_body_class($classes) {
 		$classes[] = $post->post_name;
 	}
 
+	// activation page
+	if ( cftp_string_search( 'wp-activate.php', current_url() ) ) {
+		$classes[] = 'activation';
+	}
+
+	if ( cftp_string_search( 'wp-signup.php', current_url()) ) {
+		$classes[] = 'signup';
+	}
+
+	if ( get_post_type() == 'location' && ! is_single() ) {
+		$classes[] = 'archive-location';
+	}
+
 	return $classes;
 }
 add_filter('body_class','cftp_body_class');
