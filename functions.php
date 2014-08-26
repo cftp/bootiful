@@ -232,7 +232,7 @@ function cftp_theme_js_setup() {
 
 	// register all scripts
 	wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', null, filemtime(get_template_directory() . '/assets/js/modernizr.js'));
-	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery', 'modernizr', 'jquery-ui-tabs'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'));
+	wp_register_script('cftp-js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery', 'modernizr', 'jquery-ui-tabs'), filemtime(get_template_directory() . '/assets/js/scripts.min.js'), true);
 
 	// comment threading
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -244,9 +244,6 @@ function cftp_theme_js_setup() {
 
 	// modernizr
 	wp_enqueue_script( 'modernizr' );
-
-	// standard shipped jquery
-	wp_enqueue_script( 'jquery' );
 
 	// theme js file
 	wp_enqueue_script( 'cftp-js' );
