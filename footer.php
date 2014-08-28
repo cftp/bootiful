@@ -31,6 +31,7 @@
 	</div><!-- #wp-footer -->
 
 	<?php tha_body_bottom(); ?>
+	<?php get_template_part( 'parts/google-analytics' ); ?>
 
 </body>
 </html>

@@ -416,6 +416,28 @@ class cftp_customiser {
 				'description' => __('Layout theme options.', 'bootiful'),
 			)
 		);
+
+		// Google Analytics
+		$wp_customize->add_section( 'analytics',
+			array(
+				'title'       => __( 'Analytics', 'bootiful' ),
+				'priority' => 100,
+				'capability'  => 'edit_theme_options',
+				'description' => __( 'Google Analytics settings.', 'bootiful' ),
+			)
+		);
+
+		$wp_customize->add_setting( 'ga_tracking_id', array(
+			'default'   => '',
+			'section'   => 'analytics',
+			'transport' => 'postMessage',
+		) );
+
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ga_tracking_id', array(
+			'label'        => __( 'Tracking ID', 'mytheme' ),
+			'section'    => 'analytics',
+			'settings'   => 'ga_tracking_id',
+		) ) );
 	}
 
 	/**
