@@ -1,3 +1,16 @@
+// fix for jQuery UI tabs and the customiser https://core.trac.wordpress.org/ticket/23225
+var makeTabs = function(selector) {
+	jQuery( selector ).find( "ul a" ).each( function() {
+		var href = jQuery( this ).attr( "href" ),
+		newHref = window.location.protocol + '//' + window.location.hostname +
+		window.location.pathname + href;
+
+		if ( href.indexOf( "#" ) == 0 ) {
+			jQuery( this ).attr( "href", newHref );
+		}
+	})
+};
+
 // sidebar position vars
 var $sidebar, sidebarpos, sidebartop;
 
@@ -57,6 +70,7 @@ jQuery(document).ready(function() {
 	});
 
 	// widgets in tabs
+	makeTabs('.widget_widgets_in_tabs');
 	wit_current = sessionStorage.getItem('wit_current');
 
 	jQuery(".widget_widgets_in_tabs").tabs({
