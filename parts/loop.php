@@ -34,6 +34,14 @@
 	<?php
 	// if comments are open or we have at least one comment, load up the comment template
 	if (comments_open() || '0' != get_comments_number()) {
+
+		// For Disqus + infinite scroll, we need to print the comments on index pages too (note there is an assumption
+		// here that you don't want to hide comments unless people click to a longer version of the article)
+		if ( in_array( 'disqus-infinite-scroll/cftp-disqus-infinite-scroll.php', get_option( 'active_plugins' ) ) ) {
+			global $withcomments;
+			$withcomments = true;   // see wp-includes/comment-template.php (by default, comments hidden on indexes)
+		}
+
 		comments_template();
 	}
 	?>
